@@ -31,5 +31,8 @@ Agrify is a comprehensive farm management application developed using JavaFX, Sc
 
 
 ![Agrify Logo](src/agrify/Image/Homee.png)
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dd194c018ec129a7cf932871ee186fa6579b4209
