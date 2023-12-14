@@ -688,6 +688,7 @@
                               </Button>
                               <TableView fx:id="table_ration" layoutX="38.0" layoutY="106.0" prefHeight="369.0" prefWidth="1054.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                                  <columns>
+<<<<<<< HEAD
                                     <TableColumn minWidth="0.0" prefWidth="0.0" text="Producteur/Fournisseurs" />
                                     <TableColumn fx:id="coloone_ration_espece" prefWidth="175.5" text=" espèce" />
                                     <TableColumn fx:id="colonne_ration_bute_production" minWidth="0.0" prefWidth="175.5" text="Bute de production" />
@@ -695,6 +696,16 @@
                                     <TableColumn fx:id="colonne_ration_statut_production" prefWidth="175.5" text="statut de production" />
                                     <TableColumn fx:id="colonne_ration_poids_min" prefWidth="175.5" text="poids minimal" />
                                     <TableColumn fx:id="colonne_ration_poids_max" prefWidth="175.5" text="poids maximal" />
+=======
+                                    <TableColumn fx:id="colonee_ration_nom_ingredient" prefWidth="150.2" text="Nom d' ingrédient " />
+                                    <TableColumn minWidth="0.0" prefWidth="0.0" text="Producteur/Fournisseurs" />
+                                    <TableColumn fx:id="coloone_ration_espece" prefWidth="150.2" text=" espèce" />
+                                    <TableColumn fx:id="colonne_ration_bute_production" minWidth="0.0" prefWidth="150.2" text="Bute de production" />
+                                    <TableColumn fx:id="colonne_ration_sexe_animal" prefWidth="150.2" text="sexe" />
+                                    <TableColumn fx:id="colonne_ration_statut_production" prefWidth="150.2" text="statut de production" />
+                                    <TableColumn fx:id="colonne_ration_poids_min" prefWidth="150.2" text="poids minimal" />
+                                    <TableColumn fx:id="colonne_ration_poids_max" prefWidth="150.2" text="poids maximal" />
+>>>>>>> 073fc2e73eab0384ce5fe3f7c768aa77d3506fa9
                                  </columns>
                               </TableView>
                               <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="831.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
@@ -902,7 +913,11 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
+<<<<<<< HEAD
                   <AnchorPane fx:id="popup_animal_management" layoutX="252.0" layoutY="55.0" prefHeight="579.0" prefWidth="682.0" stylesheets="@../design/TableauBordStyle.css" visible="false" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="227.0">
+=======
+                  <AnchorPane fx:id="popup_animal_management" layoutX="252.0" layoutY="55.0" prefHeight="579.0" prefWidth="682.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="227.0">
+>>>>>>> 073fc2e73eab0384ce5fe3f7c768aa77d3506fa9
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="white-bg" />
