@@ -19,6 +19,8 @@ public class AdminDashboardController {
 
     @FXML
     private Button AdminDashboardAccountSettingsBtn;
+      @FXML
+    private Button AdminDashboardGestionStockBtn;
 
     @FXML
     private Button AdminDashboardDeconnexionBtn;
@@ -74,6 +76,24 @@ public class AdminDashboardController {
             signUpStage.show();
 
             Stage splashSignInStage = (Stage) AdminDashboardGestionFieldBtn.getScene().getWindow();
+            splashSignInStage.close();
+    }
+    
+    
+    
+       @FXML
+    void AdminDashboardGestionStock(ActionEvent event) throws Exception
+    
+    {
+            Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AnimalStock.fxml"));
+            Scene signUpScene = new Scene(signUpRoot);
+  
+            Stage signUpStage = new Stage();
+            signUpStage.initStyle(StageStyle.TRANSPARENT);
+            signUpStage.setScene(signUpScene);
+            signUpStage.show();
+
+            Stage splashSignInStage = (Stage) AdminDashboardGestionStockBtn.getScene().getWindow();
             splashSignInStage.close();
     }
     

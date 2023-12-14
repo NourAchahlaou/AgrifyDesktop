@@ -1,19 +1,19 @@
 package agrify.controllers;
 
+import java.io.IOException;
+
 import agrify.entities.User;
 import agrify.services.ServiceUser;
 import agrify.utils.DataSource;
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -108,8 +108,20 @@ void Sginin0(ActionEvent event) throws IOException {
                 
                 
             } 
-            else if ("User".equals(role)) {
-                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserDashboard.fxml"));
+            else if ("Chef".equals(role)) {
+                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AnimalDashboard.fxml"));
+                Scene animalDashboardScene = new Scene(animalDashboardRoot);
+
+                Stage animalDashboardStage = new Stage();
+                animalDashboardStage.initStyle(StageStyle.TRANSPARENT);
+                animalDashboardStage.setScene(animalDashboardScene);
+                animalDashboardStage.show();
+
+                Stage signInStage = (Stage) SgininBtn0.getScene().getWindow();
+                signInStage.close();
+            }
+             else if ("Veterinaire".equals(role)) {
+                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AffichageMaladie.fxml"));
                 Scene animalDashboardScene = new Scene(animalDashboardRoot);
 
                 Stage animalDashboardStage = new Stage();

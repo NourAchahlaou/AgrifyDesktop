@@ -6,10 +6,14 @@
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/NouveauNesEntity.java</file>
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/IngrediantEntity.java</file>
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceIngredient.java</file>
+            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/BesoinNutritionnelsEntity.java</file>
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/AnimalManagementController.java</file>
+            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServicePresence.java</file>
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceAnimal.java</file>
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceAnimauxEnGestation.java</file>
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/Animal.java</file>
+            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceRation.java</file>
+            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceBesoinNutritionnel.java</file>
             <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/AnimauxEnGestationEntity.java</file>
         </group>
     </open-files>
