@@ -23,11 +23,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import agrify.entities.*;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.collections.FXCollections;
@@ -292,7 +290,7 @@ public class AnimalStockController implements Initializable {
     @FXML
     private void fnsta(ActionEvent event) {
           try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalStock.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/AnimalStock.fxml"));
         Parent root = loader.load();
 
         Scene AnimalStockScene = new Scene(root);
@@ -308,7 +306,7 @@ public class AnimalStockController implements Initializable {
     @FXML
     private void fnstp(ActionEvent event) {
          try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlanteStock.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/PlanteStock.fxml"));
         Parent root = loader.load();
 
         Scene PlanteStockScene = new Scene(root);
@@ -324,7 +322,7 @@ public class AnimalStockController implements Initializable {
     @FXML
     private void fnstd(ActionEvent event) {
               try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockDivers.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/StockDivers.fxml"));
         Parent root = loader.load();
 
         Scene StockDiversScene = new Scene(root);
@@ -337,7 +335,6 @@ public class AnimalStockController implements Initializable {
     }
     }
 
-    
     
     
     

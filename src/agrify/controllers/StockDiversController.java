@@ -235,7 +235,7 @@ public class StockDiversController implements Initializable {
       @FXML
     private void fnsta(ActionEvent event) {
           try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnimalStock.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/AnimalStock.fxml"));
         Parent root = loader.load();
 
         Scene AnimalStockScene = new Scene(root);
@@ -251,7 +251,7 @@ public class StockDiversController implements Initializable {
     @FXML
     private void fnstp(ActionEvent event) {
          try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlanteStock.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/PlanteStock.fxml"));
         Parent root = loader.load();
 
         Scene PlanteStockScene = new Scene(root);
@@ -267,7 +267,7 @@ public class StockDiversController implements Initializable {
     @FXML
     private void fnstd(ActionEvent event) {
               try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StockDivers.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/StockDivers.fxml"));
         Parent root = loader.load();
 
         Scene StockDiversScene = new Scene(root);

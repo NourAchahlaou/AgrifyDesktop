@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.FieldAjoutController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/FieldAjout.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="FieldNomTextFill" alignment="CENTER" layoutX="123.0" layoutY="241.0" prefHeight="45.0" prefWidth="300.0" promptText="Nom du Field" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="FieldTypeTextFill" alignment="CENTER" layoutX="124.0" layoutY="325.0" prefHeight="45.0" prefWidth="300.0" promptText="Type de Field" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="FieldSuperficieTextFill" alignment="CENTER" layoutX="124.0" layoutY="402.0" prefHeight="45.0" prefWidth="300.0" promptText="Superficie de Field" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <TextField fx:id="FieldQuantitéTextFill" alignment="CENTER" layoutX="124.0" layoutY="488.0" prefHeight="45.0" prefWidth="300.0" promptText="Quantité Par Field" style="-fx-background-color: #fff; -fx-text-fill: #000; -fx-font-size: 16px; -fx-border-color: #8d8;" />
+      <Button fx:id="AddFieldBtn" layoutX="824.0" layoutY="630.0" mnemonicParsing="false" onAction="#AddField" prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: #000; -fx-text-fill: #8d8; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia;" text="Ajouter">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-add-100%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="AddFieldBackBtn1" layoutX="1020.0" layoutY="630.0" mnemonicParsing="false" onAction="#AddFieldBack" prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: #000; -fx-text-fill: #8d8; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia;" text="Retour">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-logout-rounded-left-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="AddUserMessage" layoutX="50.0" layoutY="544.0" prefHeight="45.0" prefWidth="413.0" style="-fx-text-fill: #731702; -fx-font-size: 16px;" text="Error messgae" />
+   </children>
+</AnchorPane>
