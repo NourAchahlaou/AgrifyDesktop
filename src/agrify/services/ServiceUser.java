@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package agrify.services;
-import agrify.entities.User;
-import agrify.utils.DataSource;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -17,8 +17,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
+import agrify.entities.User;
+import agrify.utils.DataSource;
 
 
 
@@ -343,34 +345,59 @@ public void updateUserr(User user)
     } catch (SQLException e) {
     }    return false;
 }
-    
-@Override
-public User authenticateUser(String username, String password) {
-    try {
-        String selectQuery = "SELECT * FROM user WHERE username = ? AND password = ?";
-        PreparedStatement preparedStatement = connect.prepareStatement(selectQuery);
-        preparedStatement.setString(1, username);
-        preparedStatement.setString(2, password);
-        ResultSet resultSet = preparedStatement.executeQuery();
+      @Override
+  
+ public User authenticateUser(String username, String password) {
+        try {
+            String hashedPassword = hashPassword(password);
 
-        if (resultSet.next()) {
-            User user = new User();
-            user.setUser_id(resultSet.getInt("user_id"));
-            user.setUser_nom(resultSet.getString("user_nom"));
-            user.setUser_prenom(resultSet.getString("user_prenom"));
-            user.setUser_email(resultSet.getString("user_email"));
-            user.setUser_telephone(resultSet.getString("user_telephone"));
-            user.setUser_role(resultSet.getString("user_role"));
-            user.setUser_genre(resultSet.getString("user_genre"));
-            user.setUser_nbrabscence(resultSet.getInt("user_nbrabscence"));
-            user.setUsername(resultSet.getString("username"));
-            user.setPassword(resultSet.getString("password"));
-            return user;
+            if (hashedPassword == null) {
+                // Handle error or log an error
+                return null;
+            }
+
+            String selectQuery = "SELECT * FROM user WHERE username = ? AND password = ?";
+            PreparedStatement preparedStatement = connect.prepareStatement(selectQuery);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, hashedPassword);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                User user = new User();
+                user.setUser_id(resultSet.getInt("user_id"));
+                user.setUser_nom(resultSet.getString("user_nom"));
+                user.setUser_prenom(resultSet.getString("user_prenom"));
+                user.setUser_email(resultSet.getString("user_email"));
+                user.setUser_telephone(resultSet.getString("user_telephone"));
+                user.setUser_role(resultSet.getString("user_role"));
+                user.setUser_genre(resultSet.getString("user_genre"));
+                user.setUser_nbrabscence(resultSet.getInt("user_nbrabscence"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                return user;
+            }
+        } catch (SQLException ex) {
+            // Handle exception or log an error
         }
-    } catch (SQLException ex) {
+        return null;
     }
-    return null;
-}
+    @Override
+
+    public String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            // Handle exception or log an error
+            return null;
+        }
+    }
+
 
 
 

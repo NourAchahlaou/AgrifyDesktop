@@ -1,9 +1,11 @@
 package agrify.controllers;
 
+import java.io.IOException;
+
+import agrify.api.SendEmail;
 import agrify.entities.User;
 import agrify.services.ServiceUser;
 import agrify.utils.DataSource;
-import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import agrify.api.SendEmail;
 
 /**
  *
@@ -84,7 +85,7 @@ public class UserAddController {
                 UserSexField.setValue("Select --------"); 
 
     ObservableList<String> RoleList = FXCollections.observableArrayList(
-                "User", "Admin");
+                "Chef", "Admin","Veterinaire");
                 UserRoleField.setItems(RoleList);
                 UserRoleField.setValue("Select --------"); 
 }
@@ -136,9 +137,11 @@ void Add0User(ActionEvent event) throws IOException
     int nbrAbsence = 0; 
     String username = UserUsernameField.getText();
     String password = UserPasswordField.getText();
+            String hashedPassword = userService.hashPassword(password);
+
     
     
-    User user = new User(nom, prenom, email, telephone, role, genre, nbrAbsence, username, password);
+    User user = new User(nom, prenom, email, telephone, role, genre, nbrAbsence, username, hashedPassword);
     userService.ajouter(user);
     SendEmail emailSender = new SendEmail();
 emailSender.sendEmail(email, "Welcome to Our Application", "Hello, " + nom + "! You have been successfully registered.\n\n"
