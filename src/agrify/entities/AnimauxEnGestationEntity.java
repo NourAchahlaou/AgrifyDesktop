@@ -16,22 +16,22 @@ import java.sql.Date;
 public class AnimauxEnGestationEntity {
     private long id;
     private String espece;
-    private Date preparationVêlage;
-    private Date vêlagePrévu;
+    private Date preparationVelage;
+    private Date velagePrevu;
     private Date dateAvertissement;
 
-    public AnimauxEnGestationEntity(long id, String espece, Date preparationVêlage, Date vêlagePrévu, Date dateAvertissement) {
+    public AnimauxEnGestationEntity(long id, String espece, Date preparationVelage, Date velagePrevu, Date dateAvertissement) {
         this.id = id;
         this.espece = espece;
-        this.preparationVêlage = preparationVêlage;
-        this.vêlagePrévu = vêlagePrévu;
+        this.preparationVelage = preparationVelage;
+        this.velagePrevu = velagePrevu;
         this.dateAvertissement = dateAvertissement;
     }
 
-    public AnimauxEnGestationEntity(String espece, Date preparationVêlage, Date vêlagePrévu, Date dateAvertissement) {
+    public AnimauxEnGestationEntity(String espece, Date preparationVelage, Date velagePrevu, Date dateAvertissement) {
         this.espece = espece;
-        this.preparationVêlage = preparationVêlage;
-        this.vêlagePrévu = vêlagePrévu;
+        this.preparationVelage = preparationVelage;
+        this.velagePrevu = velagePrevu;
         this.dateAvertissement = dateAvertissement;    }
 
     // Getters and Setters
@@ -51,20 +51,20 @@ public class AnimauxEnGestationEntity {
         this.espece = espece;
     }
 
-    public Date getPreparationVêlage() {
-        return preparationVêlage;
+    public Date getPreparationVelage() {
+        return preparationVelage;
     }
 
-    public void setPreparationVêlage(Date preparationVêlage) {
-        this.preparationVêlage = preparationVêlage;
+    public void setPreparationVelage(Date preparationVelage) {
+        this.preparationVelage = preparationVelage;
     }
 
-    public Date getVêlagePrévu() {
-        return vêlagePrévu;
+    public Date getVelagePrevu() {
+        return velagePrevu;
     }
 
-    public void setVêlagePrévu(Date vêlagePrévu) {
-        this.vêlagePrévu = vêlagePrévu;
+    public void setVelagePrevu(Date velagePrevu) {
+        this.velagePrevu = velagePrevu;
     }
 
     public Date getDateAvertissement() {

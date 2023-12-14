@@ -18,7 +18,6 @@ public class NouveauNesEntity {
     private Date dateNaissance;
     private String espece;
     private double poids;
-    private String etatSante;
 
     // Constructors, getters, and setters go here
 
@@ -29,7 +28,6 @@ public class NouveauNesEntity {
         this.dateNaissance = dateNaissance;
         this.espece = espece;
         this.poids = poids;
-        this.etatSante = etatSante;
     }
 
     // Getters and setters
@@ -72,14 +70,5 @@ public class NouveauNesEntity {
     public void setPoids(double poids) {
         this.poids = poids;
     }
-
-    public String getEtatSante() {
-        return etatSante;
-    }
-
-    public void setEtatSante(String etatSante) {
-        this.etatSante = etatSante;
-    }
-
 
 }

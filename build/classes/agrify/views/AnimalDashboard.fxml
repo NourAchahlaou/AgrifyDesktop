@@ -854,13 +854,12 @@
                               </Button>
                               <TableView fx:id="table_anaimal_management" layoutX="38.0" layoutY="106.0" prefHeight="369.0" prefWidth="1054.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
                                  <columns>
-                                    <TableColumn fx:id="colonne_nombre_animal_animal_management" prefWidth="175.2" text="nombre" />
                                     <TableColumn minWidth="0.0" prefWidth="0.0" text="Producteur/Fournisseurs" />
-                                    <TableColumn fx:id="colonne_espece_animal_management" prefWidth="175.2" text=" espèce" />
-                                    <TableColumn fx:id="colonne_poids_max_animal_management" minWidth="8.0" prefWidth="175.2" text="poids maximal" />
-                                    <TableColumn fx:id="colonne_poid_min_animal_management" minWidth="8.0" prefWidth="175.2" text="poids minimal" />
-                                    <TableColumn fx:id="colonne_sexe_animal_management" prefWidth="175.2" text="sexe" />
-                                    <TableColumn fx:id="colonne_age_animal_management" prefWidth="175.2" text="age" />
+                                    <TableColumn fx:id="colonne_espece_animal_management" prefWidth="211.0" text=" espèce" />
+                                    <TableColumn fx:id="colonne_poids_animal_management" minWidth="8.0" prefWidth="211.0" text="poids" />
+                                    <TableColumn fx:id="colonne_unit_animal_animal_management1" minWidth="8.0" prefWidth="211.0" text="unit animal" />
+                                    <TableColumn fx:id="colonne_sexe_animal_management" prefWidth="211.0" text="sexe" />
+                                    <TableColumn fx:id="colonne_age_animal_management" prefWidth="211.0" text="age" />
                                  </columns>
                               </TableView>
                               <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="831.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
@@ -904,7 +903,7 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="popup_animal_management" layoutX="252.0" layoutY="55.0" prefHeight="579.0" prefWidth="682.0" stylesheets="@../design/TableauBordStyle.css" visible="false" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="227.0">
+                  <AnchorPane fx:id="popup_animal_management" layoutX="252.0" layoutY="55.0" prefHeight="579.0" prefWidth="682.0" stylesheets="@../design/TableauBordStyle.css" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="227.0">
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="white-bg" />
@@ -929,19 +928,15 @@
                               <TextField fx:id="popup_sexe_animal_management" layoutX="64.0" layoutY="308.0" promptText="sexe " styleClass="input" stylesheets="@../design/TableauBordStyle.css" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="308.0" />
                               <Label layoutX="64.0" layoutY="280.0" prefHeight="17.0" prefWidth="37.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="sexe :" />
                               <Label layoutX="65.0" layoutY="362.0" prefHeight="17.0" prefWidth="135.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="poids minimal  (kg) :" />
-                              <Label fx:id="label_poid_min_controller_animal_management" layoutX="234.0" layoutY="388.0" text="200" />
                               <ImageView fitHeight="266.0" fitWidth="301.0" layoutX="379.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Image/sheep_1.png" />
                                  </image>
                               </ImageView>
-                              <Slider fx:id="slide_poids_min_animal_management" layoutX="70.0" layoutY="389.0" AnchorPane.bottomAnchor="173.79999999999973" />
-                              <Label layoutX="266.0" layoutY="43.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="ajouter un nouveau animal " />
-                              <Label layoutX="64.0" layoutY="422.0" prefHeight="17.0" prefWidth="135.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="poids maximal (kg) :" />
-                              <Label fx:id="label_poid_max_controller_animal_management" layoutX="233.0" layoutY="448.0" text="200" />
-                              <Slider fx:id="slide_poids_max_animal_management" layoutX="69.0" layoutY="449.0" />
-                              <Label layoutX="65.0" layoutY="473.0" prefHeight="17.0" prefWidth="130.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="nombre" />
-                              <TextField fx:id="popup_nombre_animal_management1" layoutX="65.0" layoutY="508.0" prefHeight="25.0" prefWidth="150.0" promptText="nombre" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
+                              <Slider fx:id="slide_poids_animal_management" layoutX="60.0" layoutY="397.0" max="1400" min="0" AnchorPane.bottomAnchor="165.19999999999993" />
+                              <Label layoutX="262.0" layoutY="33.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="modifier ou supprimer votre  animal " />
+                              <Label layoutX="295.0" layoutY="362.0" prefHeight="17.0" prefWidth="135.0" styleClass="header-1" stylesheets="@../design/TableauBordStyle.css" text="unite (kg) :" />
+                              <Label fx:id="label_poid_controller_animal_management" layoutX="205.0" layoutY="396.0" text="200" />
                               <AnchorPane fx:id="anchor_btn_enregistrer_animal" layoutX="456.0" layoutY="481.0" prefHeight="79.0" prefWidth="205.0" visible="false">
                                  <children>
                                     <Button fx:id="btn_enregistrer_popup_animal_management" layoutX="7.0" layoutY="29.0" mnemonicParsing="false" onAction="#addAnimal" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="enregistrer" />
@@ -963,6 +958,7 @@
                                     <Button fx:id="btn_modifier_popup_animal_management" layoutX="216.0" layoutY="29.0" mnemonicParsing="false" onAction="#modifySelectedAnimal" prefHeight="40.0" prefWidth="180.0" styleClass="btn-2" stylesheets="@../design/TableauBordStyle.css" text="modifier" />
                                  </children>
                               </AnchorPane>
+                              <ComboBox fx:id="popup_combobox_unite_animal_amanagement1" layoutX="295.0" layoutY="389.0" prefHeight="27.0" prefWidth="95.0" promptText="unité" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
                            </children>
                         </AnchorPane>
                      </children>

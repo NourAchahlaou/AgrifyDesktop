@@ -85,7 +85,10 @@ public class AnimalManagementController implements Initializable {
     private ResultSet result;
     @FXML
 public ComboBox<String> nom_ingredient_ration_selected;
+        @FXML
+public ComboBox<String> popup_combobox_unite_animal_amanagement1;
     @FXML
+    
     private LineChart<String, Number> ingredient_quantity;
     @FXML
     private LineChart<String, Number> linechart_animal;
@@ -124,9 +127,8 @@ public ComboBox<String> nom_ingredient_ration_selected;
     private Button btn_supprimer_popup_animal_management;
     @FXML
     private AnchorPane anchor_btn_delete_modify_animal;
-    @FXML
-    private TextField popup_nombre_animal_management1;
-
+    
+    
     @FXML
     private TextField adf_popup_besoin_nutritionnel;
 
@@ -346,17 +348,13 @@ public ComboBox<String> nom_ingredient_ration_selected;
     @FXML
     private TableColumn<BesoinNutritionnelsEntity, String> colonne_espece_besoin_nutritionnel;
 
-    @FXML
-    private TableColumn<Animal, String> colonne_nombre_animal_animal_management;
+
 
     @FXML
     private TableColumn<BesoinNutritionnelsEntity, String> colonne_nom_produit_besoin_nutritionnel;
 
     @FXML
-    private TableColumn<Animal, String> colonne_poid_min_animal_management;
-
-    @FXML
-    private TableColumn<Animal, String> colonne_poids_max_animal_management;
+    private TableColumn<Animal, String> colonne_poids_animal_management;
 
     @FXML
     private TableColumn<BesoinNutritionnelsEntity, String> colonne_poids_max_besoin_nutritionnel;
@@ -400,9 +398,10 @@ public ComboBox<String> nom_ingredient_ration_selected;
 
     @FXML
     private ComboBox<String> combobox_udm_popup_ingredient_management;
-
     @FXML
     private TableColumn<AnimauxEnGestationEntity, Date> dashboard_elvage_imminent;
+    @FXML
+    private TableColumn<Animal, String> colonne_unit_animal_animal_management1;
 
     @FXML
     private TableColumn<AnimauxEnGestationEntity, Date> dashboard_espece_animal_gestation;
@@ -455,7 +454,7 @@ public ComboBox<String> nom_ingredient_ration_selected;
     private Label label_ovins_en_gestation;
 
     @FXML
-    private Label label_poid_max_controller_animal_management;
+    private Label label_poid_controller_animal_management;
 
     @FXML
     private Label label_poid_max_ration_controller;
@@ -608,10 +607,7 @@ public ComboBox<String> nom_ingredient_ration_selected;
     private TextField sexe_popup2_ration;
 
     @FXML
-    private Slider slide_poids_max_animal_management;
-
-    @FXML
-    private Slider slide_poids_min_animal_management;
+    private Slider slide_poids_animal_management;
 
     @FXML
     private TextArea source_popup_ingredient_management;
@@ -1048,6 +1044,7 @@ public ComboBox<String> nom_ingredient_ration_selected;
        
 
         page_tableau_bord.setVisible(true);
+        popup_combobox_unite_animal_amanagement1.setItems(FXCollections.observableArrayList("kg", "gram", "tonne"));
         nutriment_principal_combobox.setItems(FXCollections.observableArrayList("All", "Fibre", "Energie", "Proteine", "Mineral"));
         combobox_bute_production_popup2_ration.setItems(FXCollections.observableArrayList("Viande", "Lait", "Œufs"));
         combobox_popup_espece_ration.setItems(FXCollections.observableArrayList("Moutons", "Bovins", "Poules", "Dindes", "abeilles"));
@@ -1086,14 +1083,11 @@ public ComboBox<String> nom_ingredient_ration_selected;
             label_poid_max_ration_controller.setText(String.valueOf(newValue.intValue()));
         });
         //
-        slide_poids_min_animal_management.valueProperty().addListener((observable, oldValue, newValue) -> {
-            // Update the label as the slider value changes
-            label_poid_min_controller_animal_management.setText(String.valueOf(newValue.intValue()));
-        });
 
-        slide_poids_max_animal_management.valueProperty().addListener((observable, oldValue, newValue) -> {
+
+        slide_poids_animal_management.valueProperty().addListener((observable, oldValue, newValue) -> {
             // Update the label as the slider value changes
-            label_poid_max_controller_animal_management.setText(String.valueOf(newValue.intValue()));
+            label_poid_controller_animal_management.setText(String.valueOf(newValue.intValue()));
         });
         //ingredient :!!!!!!!!!!!!!!!!!!!!!!
         //table views (ingredient)
@@ -1146,18 +1140,18 @@ public ComboBox<String> nom_ingredient_ration_selected;
         animauxEnGestationTable.setItems(animauxEnGestationList);
 
         // Associate table columns with entity properties using PropertyValueFactory
-        dashboard_elvage_imminent.setCellValueFactory(new PropertyValueFactory<>("vêlagePrévu"));
+        dashboard_elvage_imminent.setCellValueFactory(new PropertyValueFactory<>("velagePrevu"));
         dashboard_espece_animal_gestation.setCellValueFactory(new PropertyValueFactory<>("espece"));
         dashboard_dateAdv_animal_gestation.setCellValueFactory(new PropertyValueFactory<>("dateAvertissement"));
-        dashboard_prep_elevage.setCellValueFactory(new PropertyValueFactory<>("preparationVêlage"));
+        dashboard_prep_elevage.setCellValueFactory(new PropertyValueFactory<>("preparationVelage"));
         //
         ObservableList<Animal> animalList = loadAnimalFromDatabase();
-        colonne_nombre_animal_animal_management.setCellValueFactory(new PropertyValueFactory<>("nombreAnimal"));
-        colonne_espece_animal_management.setCellValueFactory(new PropertyValueFactory<>("especeAnimal"));
-        colonne_poid_min_animal_management.setCellValueFactory(new PropertyValueFactory<>("poidsminRation"));
-        colonne_poids_max_animal_management.setCellValueFactory(new PropertyValueFactory<>("poidsmaxRation"));
-        colonne_age_animal_management.setCellValueFactory(new PropertyValueFactory<>("ageAnimal"));
-        colonne_sexe_animal_management.setCellValueFactory(new PropertyValueFactory<>("sexeRation"));
+        colonne_unit_animal_animal_management1.setCellValueFactory(new PropertyValueFactory<>("unit animal"));
+        colonne_espece_animal_management.setCellValueFactory(new PropertyValueFactory<>("espece"));
+        colonne_poids_animal_management.setCellValueFactory(new PropertyValueFactory<>("poids"));
+        colonne_unit_animal_animal_management1.setCellValueFactory(new PropertyValueFactory<>("unit_animal"));
+        colonne_sexe_animal_management.setCellValueFactory(new PropertyValueFactory<>("sexe"));
+        colonne_age_animal_management.setCellValueFactory(new PropertyValueFactory<>("age"));
         table_anaimal_management.setItems(animalList);
 
         table_anaimal_management.getSelectionModel().selectedItemProperty().addListener(
@@ -1280,7 +1274,7 @@ public ComboBox<String> nom_ingredient_ration_selected;
 
         List<Animal> animals = service.getSpecificColumnsFromDatabase();
         btn_volaille_filter_animal_management.setOnAction(event -> {
-            List<String> selectedSpecies = Arrays.asList("Poules", "Dindes", "poules", "dindes"); // Add more species as needed
+            List<String> selectedSpecies = Arrays.asList("Poulets", "Dindes", "poulets", "dindes"); // Add more species as needed
             List<Animal> filteredList = filterBySpecies(animals, selectedSpecies);
 
             // Update your table view with the filtered list
@@ -1288,7 +1282,7 @@ public ComboBox<String> nom_ingredient_ration_selected;
 
         });
         btn_betais_filter_animal_management.setOnAction(event -> {
-            List<String> selectedSpecies = Arrays.asList("Moutons", "Bovins", "moutons", "bovins", "mouton"); // Add more species as needed
+            List<String> selectedSpecies = Arrays.asList("Moutons", "Bovins", "moutons", "bovins", "mouton","chèvres","Chèvres"); // Add more species as needed
             List<Animal> filteredList = filterBySpecies(animals, selectedSpecies);
 
             // Update your table view with the filtered list
@@ -2142,12 +2136,12 @@ void addValeurNutritionnelBesoin(ActionEvent event) throws IOException {
         anchor_btn_enregistrer_animal.setVisible(false);
         anchor_btn_delete_modify_animal.setVisible(true);
         // Populate the animal management fields with data from selectedAnimal
-        popup_nombre_animal_management1.setText(selectedAnimal.getUnit_animal());
+        popup_combobox_unite_animal_amanagement1.setValue(selectedAnimal.getUnit_animal());
 
         popup_age_animal_management.setText(String.valueOf(selectedAnimal.getAge()));
-        popup_combobox_espece_animal_amanagement.setValue(selectedAnimal.getEspece());
+        popup_combobox_espece_animal_amanagement.setValue(selectedAnimal.getEspece());  
         popup_sexe_animal_management.setText(selectedAnimal.getSexe());
-        slide_poids_max_animal_management.setValue(selectedAnimal.getPoids());
+        slide_poids_animal_management.setValue(selectedAnimal.getPoids());
 
         // You may need to update the above lines according to the actual properties in your Animal class.
     }
@@ -2209,9 +2203,9 @@ void addAnimal(ActionEvent event) {
         // Create an Animal object and populate it with data from the input fields
         String espece = popup_combobox_espece_animal_amanagement.getValue();
         String sexe = popup_sexe_animal_management.getText();
-        double poids = slide_poids_max_animal_management.getValue();
+        double poids = slide_poids_animal_management.getValue();
         int age = Integer.parseInt(popup_age_animal_management.getText());
-        String unit_animal =popup_nombre_animal_management1.getText();
+        String unit_animal =popup_combobox_unite_animal_amanagement1.getValue();
 
         Animal animal = new Animal(espece, sexe, poids, age, unit_animal);
 
@@ -2228,7 +2222,7 @@ private boolean isInputValid() {
     if (popup_combobox_espece_animal_amanagement.getValue() == null
             || popup_sexe_animal_management.getText().isEmpty()
             || popup_age_animal_management.getText().isEmpty()
-            || popup_nombre_animal_management1.getText().isEmpty()) {
+            || popup_combobox_unite_animal_amanagement1.getValue().isEmpty()) {
         Alert errorAlert = new Alert(AlertType.ERROR);
         errorAlert.setTitle("Input Error");
         errorAlert.setHeaderText(null);
@@ -2264,9 +2258,9 @@ private boolean isInputValid() {
                 // Get the updated values from your input fields
                 String espece = popup_combobox_espece_animal_amanagement.getValue();
                 String sexe = popup_sexe_animal_management.getText();
-                double poids = slide_poids_min_animal_management.getValue();
+                double poids = slide_poids_animal_management.getValue();
                 int age = Integer.parseInt(popup_age_animal_management.getText());
-                String unit_animal =popup_nombre_animal_management1.getText();
+                String unit_animal =popup_combobox_unite_animal_amanagement1.getValue();
 
                 // Update the selectedAnimal
                 selectedAnimal.setEspece(espece);
