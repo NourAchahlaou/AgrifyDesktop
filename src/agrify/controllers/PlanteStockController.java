@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package agrify.views;
+package agrify.controllers;
 
 //import com.itextpdf.text.Document;
 //import com.itextpdf.text.DocumentException;
