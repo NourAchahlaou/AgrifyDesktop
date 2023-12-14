@@ -68,13 +68,9 @@ public class AffichageMaladieController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         maladieaff1.setCellValueFactory(new PropertyValueFactory<>("healthid")); 
     maladieaff2.setCellValueFactory(new PropertyValueFactory<>("animalId")); 
-   
     maladieaff4.setCellValueFactory(new PropertyValueFactory<>("medicament")); 
     maladieaff5.setCellValueFactory(new PropertyValueFactory<>("typeDeTraitement")); 
     maladieaff6.setCellValueFactory(new PropertyValueFactory<>("dosage")); 
-    
-
-  
         HealthCrud rp=new HealthCrud();
         List<Healh> maladies = rp.affichermaladie();
 
@@ -170,6 +166,22 @@ public class AffichageMaladieController implements Initializable {
 
     @FXML
     private void onexitmaladie(MouseEvent event) {
-        javafx.application.Platform.exit();
+        try {
+        Parent aff123Root = FXMLLoader.load(getClass().getResource("/agrify/views/signin.fxml"));
+        Scene Scene1 = new Scene(aff123Root);
+        
+        
+        // Create a new stage  interface
+        Stage ret123Stage = new Stage();
+        ret123Stage.initStyle(StageStyle.TRANSPARENT);
+        ret123Stage.setScene(Scene1);
+        ret123Stage.show();
+        
+        // Close the splash screen stage
+        Stage splash1b2 = (Stage) allerasuppermaladie.getScene().getWindow();
+        splash1b2.close();
+    } catch (IOException ex) {
+            System.out.println("1");
+    }
     }
 }
