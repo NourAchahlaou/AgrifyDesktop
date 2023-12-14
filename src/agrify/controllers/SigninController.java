@@ -109,7 +109,7 @@ void Sginin0(ActionEvent event) throws IOException {
                 
             } 
             else if ("Chef".equals(role)) {
-                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserDashboard.fxml"));
+                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AnimalDashboard.fxml"));
                 Scene animalDashboardScene = new Scene(animalDashboardRoot);
 
                 Stage animalDashboardStage = new Stage();
@@ -121,7 +121,7 @@ void Sginin0(ActionEvent event) throws IOException {
                 signInStage.close();
             }
              else if ("Veterinaire".equals(role)) {
-                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/UserDashboard.fxml"));
+                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AffichageMaladie.fxml"));
                 Scene animalDashboardScene = new Scene(animalDashboardRoot);
 
                 Stage animalDashboardStage = new Stage();
