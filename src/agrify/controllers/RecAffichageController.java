@@ -151,24 +151,26 @@ public void initialize(URL location, ResourceBundle resources) {
     private void onRECMODIFALLER(ActionEvent event) {
         //****************supprimer faute de declaration !!!!!!!!!!!!!!!!!!!!!!!!
        
-    try {
-        Parent suppRoot = FXMLLoader.load(getClass().getResource("/agrify/views/Recsupp.fxml"));
-        Scene signUpScene = new Scene(suppRoot);
+   try {
+        Parent aff12Root = FXMLLoader.load(getClass().getResource("/agrify/views/Recsupp.fxml"));
+        Scene Scene1 = new Scene(aff12Root);
         
         
         // Create a new stage  interface
-        Stage suppStage = new Stage();
-        suppStage.initStyle(StageStyle.TRANSPARENT);
-        suppStage.setScene(signUpScene);
-        suppStage.show();
+        Stage ret12Stage = new Stage();
+        ret12Stage.initStyle(StageStyle.TRANSPARENT);
+        ret12Stage.setScene(Scene1);
+        ret12Stage.show();
         
         // Close the splash screen stage
-        Stage splash3 = (Stage) RECMODIFALLER.getScene().getWindow();
-        splash3.close();
+        Stage splash2 = (Stage) RECMODIFALLER.getScene().getWindow();
+        splash2.close();
     } catch (IOException ex) {
-        Logger.getLogger(RecAffichageController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("1");
     }
-}
+
+    }
+
 
 
     @FXML

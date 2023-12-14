@@ -142,23 +142,27 @@ private List<TypeRec> getAllTypeReclamations() {
 
     @FXML
     private void returnajo(ActionEvent event) {
-       try {
-        Parent aff12Root = FXMLLoader.load(getClass().getResource("/agrify/views/RecAffichage.fxml"));
-        Scene Scene1 = new Scene(aff12Root);
+        try {
+        Parent rr8Root = FXMLLoader.load(getClass().getResource("/agrify/views/RecAffichage.fxml"));
+        Scene Scene1 = new Scene(rr8Root);
         
         
         // Create a new stage  interface
-        Stage ret12Stage = new Stage();
-        ret12Stage.initStyle(StageStyle.TRANSPARENT);
-        ret12Stage.setScene(Scene1);
-        ret12Stage.show();
+        Stage er18Stage = new Stage();
+        er18Stage.initStyle(StageStyle.TRANSPARENT);
+        er18Stage.setScene(Scene1);
+        er18Stage.show();
         
         // Close the splash screen stage
-        Stage splash2 = (Stage) recajreturn.getScene().getWindow();
-        splash2.close();
+        Stage splash3 = (Stage) recajreturn.getScene().getWindow();
+        splash3.close();
     } catch (IOException ex) {
-            System.out.println("1");
-    }
+        Logger.getLogger(RecAffichageController.class.getName()).log(Level.SEVERE, null, ex);
+    }  
+    
+
+    
+    
     }
 
     @FXML

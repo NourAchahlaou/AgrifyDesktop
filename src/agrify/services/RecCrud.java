@@ -25,7 +25,7 @@ public class RecCrud  implements Recinterfaces{
     @Override
     public void ajouterreclamation(Reclamation rec) {
         try {
-            
+              Connection cnx=MyConnection.getInstance().getCon();
             String req =" INSERT INTO `reclamation`(`type_rec_id`, `rec_emp`, `rec_date`, `rec_description`, `rec_target`, `urgency`) VALUES" +
                     " ('"+rec.getTypeReclamation().getType()+"','"+rec.getRec_emp()+"','"+rec.getRec_date()+"','"+rec.getRec_description()+"','"+rec.getRec_target()+"','"+rec.getUrgency()+"')";
             Statement stm = cnx.createStatement();
@@ -59,11 +59,11 @@ public class RecCrud  implements Recinterfaces{
 
     }
 
-    @Override
-   public List<Reclamation> afficherreclamation() {
+   @Override
+public List<Reclamation> afficherreclamation() {
     List<Reclamation> recs = new ArrayList<>();
     String requet = "SELECT `id`, `type_rec_id`, `rec_emp`, `rec_date`, `rec_description`, `rec_target`, `urgency` FROM `reclamation` WHERE 1";
-    
+
     try (Statement stm = cnx.createStatement()) {
         ResultSet res = stm.executeQuery(requet);
         while (res.next()) {
@@ -71,7 +71,11 @@ public class RecCrud  implements Recinterfaces{
             rp.setRec_id(res.getInt(1));
             rp.setRec_emp(res.getString(3));
             rp.setRec_date(res.getDate(4));
-            rp.setTypeReclamation(getTypeReclamationById(res.getInt(2))); // Fetch TypeReclamation from the ID
+            
+            // Fetch TypeReclamation from the ID
+            TypeRec typeRec = getTypeReclamationById(res.getInt(2));
+            rp.setTypeReclamation(typeRec);
+            
             rp.setRec_description(res.getString(5));
             rp.setRec_target(res.getString(6));
             rp.setUrgency(res.getString(7));
@@ -83,6 +87,7 @@ public class RecCrud  implements Recinterfaces{
 
     return recs;
 }
+
 
 private TypeRec getTypeReclamationById(int typeId) {
     TypeRec typeRec = null;
