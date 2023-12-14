@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Agrify.jar" size="17072690" download="eager" />
+    <jar href="Agrify.jar" size="17072881" download="eager" />
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.48.jar" size="1006956" download="eager" />
   </resources>

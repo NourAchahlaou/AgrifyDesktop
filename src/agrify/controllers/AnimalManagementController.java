@@ -330,8 +330,6 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
     @FXML
     private TableColumn<IngrediantEntity, String> colone_nom_ingredient_management;
 
-    @FXML
-    private TableColumn<Ration, String> colonee_ration_nom_ingredient;
 
     @FXML
     private TableColumn<Animal, String> colonne_age_animal_management;
@@ -1172,7 +1170,6 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
         colonne_ration_poids_min.setCellValueFactory(new PropertyValueFactory<>("poidsMinRation"));
         colonne_ration_poids_max.setCellValueFactory(new PropertyValueFactory<>("poidsMaxRation"));
         colonne_ration_sexe_animal.setCellValueFactory(new PropertyValueFactory<>("sexeRation"));
-        colonee_ration_nom_ingredient.setCellValueFactory(new PropertyValueFactory<>("nomIngredient"));
         coloone_ration_espece.setCellValueFactory(new PropertyValueFactory<>("especeRation"));
         colonne_ration_bute_production.setCellValueFactory(new PropertyValueFactory<>("buteProductionRation"));
         table_ration.setItems(rationList);
@@ -1853,8 +1850,8 @@ void addValeurNutritionnelBesoin(ActionEvent event) throws IOException {
         String nom = nom_ingredient_popup_ingredient_management.getText();
         String type = type_ingredient_popup_ingredient_management.getValue();
         String description = description_popup_ingredient_management.getText();
-        String prix = prix_popup_ingredient_management.getText();
-        String quantite = quantite_popup_ingredient_management.getText();
+        double prix = Double.parseDouble(prix_popup_ingredient_management.getText());
+        double quantite = Double.parseDouble(quantite_popup_ingredient_management.getText());
         String udm = combobox_udm_popup_ingredient_management.getValue();
         String source = source_popup_ingredient_management.getText();
 

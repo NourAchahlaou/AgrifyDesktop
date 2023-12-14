@@ -37,7 +37,7 @@ public class ServiceRation implements IServiceRation<Ration> {
 
         try {
             // Create a SQL query to select specific columns
-            String query = "SELECT `idRation`, `especeRation`, `statutRation`, `sexeRation`, `poidsMinRation`, `poidsMaxRation`, `buteProductionRation` FROM `ration`";
+            String query = "SELECT `id`, `espece_ration`, `statut_ration`, `sexe_ration`, `poids_min_ration`, `poids_max_ration`, `bute_production_ration` FROM `ration`";
 
             // Create a prepared statement
             PreparedStatement statement = connect.prepareStatement(query);
@@ -47,13 +47,13 @@ public class ServiceRation implements IServiceRation<Ration> {
 
             while (resultSet.next()) {
                 // Retrieve the specific columns from the result set and create Ration objects
-                int idRation = resultSet.getInt("idRation");
-                String especeRation = resultSet.getString("especeRation");
-                String statutRation = resultSet.getString("statutRation");
-                String sexeRation = resultSet.getString("sexeRation");
-                double poidsMinRation = resultSet.getDouble("poidsMinRation");
-                double poidsMaxRation = resultSet.getDouble("poidsMaxRation");
-                String buteProductionRation = resultSet.getString("buteProductionRation");
+                int idRation = resultSet.getInt("id");
+                String especeRation = resultSet.getString("espece_ration");
+                String statutRation = resultSet.getString("statut_ration");
+                String sexeRation = resultSet.getString("sexe_ration");
+                double poidsMinRation = resultSet.getDouble("poids_min_ration");
+                double poidsMaxRation = resultSet.getDouble("poids_max_ration");
+                String buteProductionRation = resultSet.getString("bute_production_ration");
 
                 // Create a new Ration and add it to the list
                 Ration ration = new Ration(idRation, especeRation, statutRation, sexeRation, poidsMinRation, poidsMaxRation, buteProductionRation);
@@ -75,7 +75,7 @@ public class ServiceRation implements IServiceRation<Ration> {
     public void ajouter(Ration ration) {
         try {
             System.out.println(connect);
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO `ration`(`idRation`, `especeRation`, `statutRation`, `sexeRation`, `poidsMinRation`, `poidsMaxRation`, `buteProductionRation`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO `ration`(`id`, `espece_ration`, `statut_ration`, `sexe_ration`, `poids_min_ration`, `poids_max_ration`, `bute_production_ration`) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
             statement.setInt(1, ration.getIdRation());
             statement.setString(2, ration.getEspeceRation());
@@ -96,7 +96,7 @@ public class ServiceRation implements IServiceRation<Ration> {
     public void update(Ration ration) {
         try {
             // Prepare the SQL update statement for the 'ration' table
-            String updateQuery = "UPDATE `ration` SET `especeRation`=?, `statutRation`=?, `sexeRation`=?, `poidsMinRation`=?, `poidsMaxRation`=?, `buteProductionRation`=? WHERE `idRation`=?";
+            String updateQuery = "UPDATE `ration` SET `espece_ration`=?, `statut_ration`=?, `sexe_ration`=?, `poids_min_ration`=?, `poids_max_ration`=?, `bute_production_ration`=? WHERE `id`=?";
 
             PreparedStatement statement = connect.prepareStatement(updateQuery);
             statement.setString(1, ration.getEspeceRation());
@@ -117,7 +117,7 @@ public class ServiceRation implements IServiceRation<Ration> {
     @Override
     public void supprimer(int idRation) {
         try {
-            String deleteQuery = "DELETE FROM `ration` WHERE `idRation`=?";
+            String deleteQuery = "DELETE FROM `ration` WHERE `id`=?";
 
             PreparedStatement preparedStatement = connect.prepareStatement(deleteQuery);
             preparedStatement.setInt(1, idRation);
