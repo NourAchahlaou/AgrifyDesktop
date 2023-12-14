@@ -12,7 +12,7 @@ public class Agrify extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/agrify/views/AnimalDashboard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/agrify/views/AffichageMaladie.fxml"));
         stage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
         stage.setScene(scene);
