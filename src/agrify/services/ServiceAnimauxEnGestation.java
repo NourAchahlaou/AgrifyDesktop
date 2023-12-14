@@ -37,7 +37,7 @@ public class ServiceAnimauxEnGestation implements IServiceAnimauxEnGestation<Ani
 
     try {
         // Create a SQL query to select specific columns
-        String query = "SELECT `espece`, `statut`, `preparationVelage`, `velagePrevu`, `dateAvertissement` FROM `animauxengestationentity` ";
+        String query = "SELECT `id`, `espece`, `preparation_velage`, `velage_prevu`, `date_avertissement` FROM `gestation` ";
 
         // Create a prepared statement
         PreparedStatement statement = connect.prepareStatement(query);
@@ -48,9 +48,9 @@ public class ServiceAnimauxEnGestation implements IServiceAnimauxEnGestation<Ani
         while (resultSet.next()) {
             // Retrieve the specific columns from the result set and create AnimauxEnGestationEntity objects
             String espece = resultSet.getString("espece");
-            Date preparationVelage = resultSet.getDate("preparationVelage");
-            Date velagePrevu = resultSet.getDate("velagePrevu");
-            Date dateAvertissement = resultSet.getDate("dateAvertissement");
+            Date preparationVelage = resultSet.getDate("preparation_velage");
+            Date velagePrevu = resultSet.getDate("velage_prevu");
+            Date dateAvertissement = resultSet.getDate("date_avertissement");
 
             // Create a new AnimauxEnGestationEntity and add it to the list
             AnimauxEnGestationEntity animauxEnGestation = new AnimauxEnGestationEntity(espece, preparationVelage, velagePrevu, dateAvertissement);

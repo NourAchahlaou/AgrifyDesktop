@@ -163,7 +163,7 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
 
         try {
             if (connect != null) {
-                String query = "SELECT COUNT(*) AS total FROM animauxengestationentity WHERE statut = 'En gestation'";
+                String query = "SELECT COUNT(*) AS total FROM gestation";
                 PreparedStatement statement = connect.prepareStatement(query);
                 ResultSet resultSet = statement.executeQuery();
 

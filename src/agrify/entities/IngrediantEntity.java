@@ -23,13 +23,13 @@ public class IngrediantEntity {
 
     
      public IngrediantEntity(){}
-    public IngrediantEntity(String nom, String type, String description, String prix, String quantite, String udm, String source,String nutrimentPrincipal) {
+    public IngrediantEntity(String nom, String type, String description, double prix, double quantite, String udm, String source,String nutrimentPrincipal) {
         this.nameIngredient = nom;
         // Set other attributes as needed
         this.typeIngredient = type;
         this.descriptionIngredient = description;
-        this.costIngredient = Double.parseDouble(prix);
-        this.itemQuantityIngredient = Double.parseDouble(quantite);
+        this.costIngredient = prix;
+        this.itemQuantityIngredient =quantite;
         this.unitIngredient = udm;
         this.loadedByIngredient = source;
         this.nutrimentPrincipalIngredient = nutrimentPrincipal;

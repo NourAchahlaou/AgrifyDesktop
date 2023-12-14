@@ -43,7 +43,7 @@ public class ServiceIngredient implements IServiceIngredient<IngrediantEntity>  
 public void ajouter(IngrediantEntity ingredient) {
     try {
         System.out.println(connect);
-        PreparedStatement statement = connect.prepareStatement("INSERT INTO `ingrediants`(`idIngredient`, `nameIngredient`, `itemQuantityIngredient`, `unitIngredient`, `costIngredient`, `loadedByIngredient`, `descriptionIngredient`, `typeIngredient`,`nutrimentPrincipalIngredient`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement statement = connect.prepareStatement("INSERT INTO `ingredient`(`id`, `name_ingredient`, `item_quantity_ingredient`, `unit_ingredient`, `cost_ingredient`, `loaded_by_ingredient`, `description_ingredient`, `type_ingredient`, `nutriment_principal_ingredient`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         statement.setInt(1, ingredient.getIdIngredient());
         statement.setString(2, ingredient.getNameIngredient());
@@ -68,7 +68,7 @@ public void ajouter(IngrediantEntity ingredient) {
 
     try {
         // Create a SQL query to select specific columns
-        String query = "SELECT `nameIngredient`, `costIngredient`, `loadedByIngredient`,`nutrimentPrincipalIngredient` FROM `ingrediants`";
+        String query = "SELECT `id`, `name_ingredient`, `item_quantity_ingredient`, `unit_ingredient`, `cost_ingredient`, `loaded_by_ingredient`, `description_ingredient`, `type_ingredient`, `nutriment_principal_ingredient` FROM `ingredient`";
 
         // Create a prepared statement
         PreparedStatement statement = connect.prepareStatement(query);
@@ -78,13 +78,17 @@ public void ajouter(IngrediantEntity ingredient) {
 
         while (resultSet.next()) {
             // Retrieve the specific columns from the result set and create BesoinNutritionnelsEntity objects
-            String nom = resultSet.getString("nameIngredient");
-            String source = resultSet.getString("loadedByIngredient");
-            String prix = resultSet.getString("costIngredient");
-            String nutrimentPrincipal = resultSet.getString("nutrimentPrincipalIngredient");
+            String nom = resultSet.getString("name_ingredient");
+            double quantite= resultSet.getDouble("item_quantity_ingredient"); 
+            String udm= resultSet.getString("unit_ingredient"); 
+            String description= resultSet.getString("description_ingredient"); 
+            String source = resultSet.getString("loaded_by_ingredient");
+            double prix = resultSet.getDouble("cost_ingredient");
+            String type= resultSet.getString("type_ingredient"); 
+            String nutrimentPrincipal = resultSet.getString("nutriment_principal_ingredient");
 
             // Create a new BesoinNutritionnelsEntity and add it to the list
-            IngrediantEntity ingrediant = new IngrediantEntity(nom,prix,source,nutrimentPrincipal);
+            IngrediantEntity ingrediant = new IngrediantEntity( nom,  type,  description,  prix,  quantite,  udm,  source, nutrimentPrincipal);
             specificColumnsData.add(ingrediant);
         }
 
@@ -102,7 +106,7 @@ public void ajouter(IngrediantEntity ingredient) {
 public void update(IngrediantEntity ingrediantEntity) {
     try {
         // Prepare the SQL update statement
-        String updateQuery = "UPDATE `ingrediants` SET `nameIngredient`=?, `itemQuantityIngredient`=?, `unitIngredient`=?, `costIngredient`=?, `loadedByIngredient`=?, `descriptionIngredient`=?, `typeIngredient`=?, `nutrimentPrincipalIngredient`=? WHERE `idIngredient`=?";
+        String updateQuery = "UPDATE `ingredient` SET `name_Ingredient`=?, `item_Quantity_Ingredient`=?, `unit_Ingredient`=?, `cost_Ingredient`=?, `loaded_By_Ingredient`=?, `description_Ingredient`=?, `type_Ingredient`=?, `nutriment_PrincipalIngredient`=? WHERE `id`=?";
 
         PreparedStatement statement = connect.prepareStatement(updateQuery);
         statement.setString(1, ingrediantEntity.getNameIngredient());
@@ -125,7 +129,7 @@ private List<IngrediantEntity> ingrediants;
 @Override
 public void supprimer(int idIngredient) {
     try {
-        String deleteQuery = "DELETE FROM `ingrediants` WHERE `idIngredient`=?";
+        String deleteQuery = "DELETE FROM `ingredient` WHERE `id`=?";
 
         PreparedStatement preparedStatement = connect.prepareStatement(deleteQuery);
         preparedStatement.setInt(1, idIngredient);
@@ -142,7 +146,7 @@ public void supprimer(int idIngredient) {
  public List<IngrediantEntity> getAllIngredients() throws SQLException {
     List<IngrediantEntity> ingrediants = new ArrayList<>();
     try {
-        String query = "SELECT * FROM ingrediants"; // Correct the table name to "ingredients"
+        String query = "SELECT * FROM ingredient"; // Correct the table name to "ingredients"
 
         // Create a prepared statement
         PreparedStatement statement = connect.prepareStatement(query);
@@ -153,9 +157,9 @@ public void supprimer(int idIngredient) {
         while (resultSet.next()) {
             // Create IngrediantEntity objects and populate them with data from the result set
             IngrediantEntity ingredient = new IngrediantEntity();
-            ingredient.setIdIngredient(resultSet.getInt("idIngredient"));
-            ingredient.setNameIngredient(resultSet.getString("nameIngredient"));
-            ingredient.setItemQuantityIngredient(resultSet.getDouble("itemQuantityIngredient")); // Retrieve the "quantity" field
+            ingredient.setIdIngredient(resultSet.getInt("id"));
+            ingredient.setNameIngredient(resultSet.getString("name_Ingredient"));
+            ingredient.setItemQuantityIngredient(resultSet.getDouble("item_Quantity_Ingredient")); // Retrieve the "quantity" field
 
             ingrediants.add(ingredient);
         }

@@ -45,19 +45,14 @@
             <TableColumn fx:id="maladieaff6" prefWidth="228.0" text="Dosage" />
         </columns>
       </TableView>
-      <ImageView fx:id="exitmaladie" fitHeight="35.0" fitWidth="41.0" layoutX="217.0" layoutY="13.0" onMouseClicked="#onexitmaladie" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="exitmaladie" fitHeight="35.0" fitWidth="41.0" layoutX="1210.0" layoutY="31.0" onMouseClicked="#onexitmaladie" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Image/annuler.png" />
+            <Image url="@../Image/sign-out-alt.png" />
          </image>
       </ImageView>
       <ImageView fx:id="exitmaladie1" fitHeight="35.0" fitWidth="41.0" layoutX="1154.0" layoutY="31.0" onMouseClicked="#onexitmaladie" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Image/user.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="exitmaladie11" fitHeight="35.0" fitWidth="41.0" layoutX="1202.0" layoutY="31.0" onMouseClicked="#onexitmaladie" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Image/logout.png" />
          </image>
       </ImageView>
       <Label layoutX="1016.0" layoutY="38.0" text="Hadil sghair" />
