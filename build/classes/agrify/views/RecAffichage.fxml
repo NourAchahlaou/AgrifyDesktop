@@ -19,10 +19,9 @@
             <TableColumn fx:id="Reccul1e" prefWidth="93.0" text="Id employee" />
             <TableColumn fx:id="Reccul2d" prefWidth="108.0" text="Date" />
             <TableColumn fx:id="Reccul3t" prefWidth="203.0" text="type de reclamation" />
-            <TableColumn fx:id="Reccul4d" prefWidth="406.0" text="Description" />
-            <TableColumn fx:id="Reccul15p" prefWidth="69.0" text="Id A/p" />
-            <TableColumn fx:id="Reccul14c" prefWidth="303.0" text="Cible" />
-            <TableColumn fx:id="Reccul15u" minWidth="0.0" prefWidth="136.0" text="Urgence" />
+            <TableColumn fx:id="Reccul4d" prefWidth="496.0" text="Description" />
+            <TableColumn fx:id="Reccul14c" prefWidth="257.0" text="Cible" />
+            <TableColumn fx:id="Reccul15u" minWidth="0.0" prefWidth="161.0" text="Urgence" />
          </columns>
       </TableView>
       <AnchorPane layoutX="1428.0" prefHeight="800.0" prefWidth="146.0" styleClass="PANEL1" stylesheets="@recajou.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">

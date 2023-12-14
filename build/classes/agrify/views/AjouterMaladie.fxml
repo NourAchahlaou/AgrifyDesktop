@@ -59,6 +59,6 @@
             <Image url="@../Image/b2591bd4ff370852c2cdcc4847c87d63-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label fx:id="vetmsaj" layoutX="437.0" layoutY="557.0" prefHeight="21.0" prefWidth="263.0" textFill="#e40f0f" />
+      <Label fx:id="vetmsaj" layoutX="321.0" layoutY="638.0" prefHeight="21.0" prefWidth="263.0" textFill="#e40f0f" />
    </children>
 </AnchorPane>

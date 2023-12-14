@@ -98,7 +98,7 @@ if (b.isEmpty()) {
                                          
    
                         
-       Healh h=new Healh (a1,a4,a5,b);
+       Healh h=new Healh (a1,a4,b,a5);
         HealthCrud hp=new HealthCrud();
       hp.ajoutermaladie(h);
         vetmsaj.setText("Maladie Ajouté"); 

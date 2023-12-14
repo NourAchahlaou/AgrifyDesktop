@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Reclamation {
        private int rec_id;
-    private int rec_emp;
+    private String rec_emp;
     private Date rec_date;
 
     private TypeRec typeReclamation;
@@ -15,7 +15,19 @@ public class Reclamation {
     private String rec_target;
     private String urgency;
 
-    public Reclamation(int rec_id, int rec_emp, Date rec_date, TypeRec typeReclamation, String rec_description, String rec_target, String urgency) {
+    public Reclamation() {
+    }
+
+    public Reclamation(String rec_emp, Date rec_date, TypeRec typeReclamation, String rec_description, String rec_target, String urgency) {
+        this.rec_emp = rec_emp;
+        this.rec_date = rec_date;
+        this.typeReclamation = typeReclamation;
+        this.rec_description = rec_description;
+        this.rec_target = rec_target;
+        this.urgency = urgency;
+    }
+
+    public Reclamation(int rec_id, String rec_emp, Date rec_date, TypeRec typeReclamation, String rec_description, String rec_target, String urgency) {
         this.rec_id = rec_id;
         this.rec_emp = rec_emp;
         this.rec_date = rec_date;
@@ -23,18 +35,6 @@ public class Reclamation {
         this.rec_description = rec_description;
         this.rec_target = rec_target;
         this.urgency = urgency;
-    }
-
-    public Reclamation(int rec_emp, Date rec_date, TypeRec typeReclamation, String rec_description, String rec_target, String urgency) {
-        this.rec_emp = rec_emp;
-        this.rec_date = rec_date;
-        this.typeReclamation = typeReclamation;
-        this.rec_description = rec_description;
-        this.rec_target = rec_target;
-        this.urgency = urgency;
-    }
-
-    public Reclamation() {
     }
 
     public int getRec_id() {
@@ -45,11 +45,11 @@ public class Reclamation {
         this.rec_id = rec_id;
     }
 
-    public int getRec_emp() {
+    public String getRec_emp() {
         return rec_emp;
     }
 
-    public void setRec_emp(int rec_emp) {
+    public void setRec_emp(String rec_emp) {
         this.rec_emp = rec_emp;
     }
 
@@ -98,7 +98,6 @@ public class Reclamation {
         return "Reclamation{" + "rec_id=" + rec_id + ", rec_emp=" + rec_emp + ", rec_date=" + rec_date + ", typeReclamation=" + typeReclamation + ", rec_description=" + rec_description + ", rec_target=" + rec_target + ", urgency=" + urgency + '}';
     }
 
-    
-
+   
     
 }
