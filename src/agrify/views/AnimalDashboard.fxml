@@ -74,7 +74,7 @@
                   <Button fx:id="btn_rations" layoutX="9.0" layoutY="330.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Rations" />
                   <Button fx:id="btn_animaux_side" layoutX="9.0" layoutY="380.0" mnemonicParsing="false" onAction="#changerContinu" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Animaux" />
                   <Label layoutX="9.0" layoutY="485.0" text="Tache :" textFill="WHITE" />
-                  <Button fx:id="btn_tache" layoutX="10.0" layoutY="510.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Tache" />
+                  <Button fx:id="btn_tache" layoutX="10.0" layoutY="510.0" mnemonicParsing="false" onAction="#on_btn_tache_click" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Tache" />
                   <Button fx:id="btn_reclamation" layoutX="9.0" layoutY="559.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" styleClass="btn-1" stylesheets="@../design/TableauBordStyle.css" text="Reclamation" />
                   <ImageView fitHeight="79.0" fitWidth="91.0" layoutX="56.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
