@@ -240,7 +240,7 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="page_ingredient_main" prefHeight="661.0" prefWidth="1181.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="page_ingredient_main" prefHeight="661.0" prefWidth="1181.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane layoutX="13.0" layoutY="153.0" prefHeight="492.0" prefWidth="1134.0" stylesheets="@../design/TableauBordStyle.css">
                            <styleClass>
@@ -293,7 +293,7 @@
                                     <Image url="@../Image/proteins.png" />
                                  </image>
                               </ImageView>
-                              <Button fx:id="searchingredient_btn" layoutX="924.0" layoutY="22.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="33.0" style="-fx-background-color: none;">
+                              <Button fx:id="searchingredient_btn" layoutX="924.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleSearchButtonClick" prefHeight="29.0" prefWidth="33.0" style="-fx-background-color: none;">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

@@ -33,7 +33,7 @@ public class ServiceValeurNutritionnelBesoin implements IServiceValeurNutritionn
 }
     public void ajouter(ValeurNutritionnelBesoinNutritionnelEntity valeurNutritionnel) {
         try {
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO `valeurnutritionnelbesoin` (`pb`, `fb`, `adf`, `ndf`, `ms`, `eb`, `ca`, `p`, `mg`, `k`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO `nutritional_value_needs` (`pb`, `fb`, `adf`, `ndf`, `ms`, `eb`, `ca`, `p`, `mg`, `k`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             statement.setDouble(1, valeurNutritionnel.getPb());
             statement.setDouble(2, valeurNutritionnel.getFb());
@@ -56,13 +56,13 @@ public class ServiceValeurNutritionnelBesoin implements IServiceValeurNutritionn
     public ValeurNutritionnelBesoinNutritionnelEntity getById(int id) {
         ValeurNutritionnelBesoinNutritionnelEntity valeurNutritionnel = null;
         try {
-            PreparedStatement statement = connect.prepareStatement("SELECT `idValeurNutritionnel`, `pb`, `fb`, `adf`, `ndf`, `ms`, `eb`, `ca`, `p`, `mg`, `k` FROM `valeurnutritionnelbesoin` WHERE `idValeurNutritionnel` = ?");
+            PreparedStatement statement = connect.prepareStatement("SELECT `id`, `pb`, `fb`, `adf`, `ndf`, `ms`, `eb`, `ca`, `p`, `mg`, `k` FROM `valeurnutritionnelbesoin` WHERE `idValeurNutritionnel` = ?");
             statement.setInt(1, id);
 
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 valeurNutritionnel = new ValeurNutritionnelBesoinNutritionnelEntity();
-                valeurNutritionnel.setIdValeurNutritionnel(result.getInt("idValeurNutritionnel"));
+                valeurNutritionnel.setIdValeurNutritionnel(result.getInt("id"));
                 valeurNutritionnel.setPb(result.getDouble("pb"));
                 valeurNutritionnel.setFb(result.getDouble("fb"));
                 valeurNutritionnel.setAdf(result.getDouble("adf"));

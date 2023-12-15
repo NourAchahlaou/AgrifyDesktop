@@ -73,7 +73,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author alien kami sama
@@ -83,7 +84,10 @@ public class AnimalManagementController implements Initializable {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
-    
+    @FXML
+private TextField rechercher_input;
+        @FXML
+    private Button searchingredient_btn;
     @FXML
     private Button button_logout_animal;       
     @FXML
@@ -597,8 +601,7 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
     @FXML
     private TextField quantite_popup_ingredient_management;
 
-    @FXML
-    private TextField rechercher_input;
+    
 
     @FXML
     private TextField rechercher_input1;
@@ -1506,7 +1509,46 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
 
         return filteredList;
     }
+    private List<IngrediantEntity> ingredients;
+//search 
 
+@FXML
+private void handleSearchButtonClick() {
+    try {
+        // ... existing code ...
+String searchTerm = rechercher_input.getText().toLowerCase();
+        // Perform the search and get the results
+        List<IngrediantEntity> searchResult = searchByName(ingredients, searchTerm);
+
+        // Update the TableView with the search results
+        table_igredient_management.getItems().setAll(searchResult);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+private List<IngrediantEntity> searchByName(List<IngrediantEntity> ingredients, String searchTerm) {
+    List<IngrediantEntity> result = new ArrayList<>();
+
+    // Check for null ingredients list
+    if (ingredients == null) {
+        return result;
+    }
+
+    for (IngrediantEntity ingrediant : ingredients) {
+        // Assuming you want to search by name (modify as needed)
+        if (ingrediant.getNameIngredient() != null && ingrediant.getNameIngredient().toLowerCase().contains(searchTerm)) {
+            result.add(ingrediant);
+        }
+    }
+
+    return result;
+}
+
+   
+ 
+    
+    
 // Set the items to your TableView directly
     //tableview (affichage)
     private ObservableList<AnimauxEnGestationEntity> loadDataFromDatabase() {
@@ -1629,8 +1671,7 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
         String buteProduction = popup_combox_bute_producion.getValue();
 
         // Create a BesoinNutritionnelEntity object
-        BesoinNutritionnelsEntity besoinNutritionnel = new BesoinNutritionnelsEntity(
-                espece, statutProduction, sexe, poidsMin, poidsMax, buteProduction);
+        BesoinNutritionnelsEntity besoinNutritionnel = new BesoinNutritionnelsEntity(espece, statutProduction, sexe, poidsMin, poidsMax, buteProduction);
         System.out.println(besoinNutritionnel);
 
         // Create a confirmation dialog for adding
