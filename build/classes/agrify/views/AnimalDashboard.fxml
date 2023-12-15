@@ -20,11 +20,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane fx:id="animalManagementPagechef" prefHeight="695.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.AnimalManagementController">
-=======
-<AnchorPane prefHeight="695.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.AnimalManagementController">
->>>>>>> 8308466ef23553cde97a9bdd27a69e44c0b681cf
    <children>
       <BorderPane layoutX="58.0" layoutY="14.0" prefHeight="695.0" prefWidth="1385.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -47,20 +43,11 @@
                         <Image url="@../Image/user.png" />
                      </image>
                   </ImageView>
-<<<<<<< HEAD
-=======
-                  <ImageView fitHeight="25.0" fitWidth="19.0" layoutX="1327.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="1327.0">
-                     <image>
-                        <Image url="@../Image/logout.png" />
-                     </image>
-                  </ImageView>
->>>>>>> 8308466ef23553cde97a9bdd27a69e44c0b681cf
                   <ImageView fitHeight="25.0" fitWidth="19.0" layoutX="1288.0" layoutY="11.799999999999997" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.200000000000003">
                      <image>
                         <Image url="@../Image/adjust.png" />
                      </image>
                   </ImageView>
-<<<<<<< HEAD
                   <Button fx:id="button_logout_animal" layoutX="1327.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
@@ -70,8 +57,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
-=======
->>>>>>> 8308466ef23553cde97a9bdd27a69e44c0b681cf
                </children>
                <styleClass>
                   <String fx:value="white-bg" />
