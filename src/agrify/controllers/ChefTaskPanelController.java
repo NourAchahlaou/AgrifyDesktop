@@ -75,6 +75,9 @@ public class ChefTaskPanelController {
     private Button addTodoBtn;
     
     @FXML
+    private Button quitInspectPopupBtn;
+    
+    @FXML
     private Button saveBtn;
     
     @FXML
@@ -113,6 +116,9 @@ public class ChefTaskPanelController {
     @FXML
     private TextField nom_ingredient_popup_ingredient_management21;
 
+     @FXML
+    private AnchorPane popup_inspect_task;
+    
     @FXML
     private AnchorPane popup_add_task;
 
@@ -172,9 +178,27 @@ public class ChefTaskPanelController {
 
     @FXML
     private TableView<TaskTableDTO> tasksTable;
+    
+    @FXML
+    private TableView<Todo> TodosTable;
+    
+    @FXML
+    private TableColumn<Todo, String> TodoTitleColumn;
+    
+    @FXML
+    private TableColumn<Todo, String> severityColumn;
 
     @FXML
     private AnchorPane todoInputGroup;
+    
+    @FXML
+    private TextField taskTitle;
+    
+    @FXML
+    private TextField taskCreationDate;
+    
+    @FXML
+    private TextField taskDeadline;
 
     @FXML
     private AnchorPane todoInputGroup1;
@@ -201,7 +225,7 @@ public class ChefTaskPanelController {
 
     @FXML
     void exit(ActionEvent event) throws Exception{
-        Parent adminTaskPanel = FXMLLoader.load(getClass().getResource("/agrify/views/AdminDashboard.fxml"));
+        Parent adminTaskPanel = FXMLLoader.load(getClass().getResource("/agrify/views/AnimalDashboard.fxml"));
         Scene animalDashboardScene = new Scene(adminTaskPanel);
 
         Stage animalDashboardStage = new Stage();
@@ -271,67 +295,17 @@ public class ChefTaskPanelController {
 
     @FXML
     void initialize() {
-        popup_add_task.setVisible(false);
-        popup_edit_task.setVisible(false);
+        
+        popup_inspect_task.setVisible(false);
 
         initTableColumns();
         initTableEvents();
-        initChefDroplistFilter();
 
         updateFiltersDisplay();
         
         
     }
     
-    void initChefDroplistFilter(){
-        // Retrieve the list of all users
-        List<User> allUsers = userService.getAll();
-
-        // Convert the list to an ObservableList
-        usersObservableList = FXCollections.observableArrayList(allUsers);
-
-        // Set the ComboBox items to the list of users
-        chefDroplistFilter.setItems(usersObservableList);
-        taskAssignedChefInput.setItems(usersObservableList);
-        // Customize how the usernames are displayed
-        chefDroplistFilter.setCellFactory(new Callback<ListView<User>, ListCell<User>>() {
-            @Override
-            public ListCell<User> call(ListView<User> param) {
-                return new UserListCell();
-            }
-        });
-        
-        chefDroplistFilter.setButtonCell(new ListCell<User>() {
-            @Override
-            protected void updateItem(User item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText("");
-                } else {
-                    setText(item.getUsername());
-                }
-            }
-        });
-        
-        taskAssignedChefInput.setCellFactory(new Callback<ListView<User>, ListCell<User>>() {
-            @Override
-            public ListCell<User> call(ListView<User> param) {
-                return new UserListCell();
-            }
-        });
-        
-        taskAssignedChefInput.setButtonCell(new ListCell<User>() {
-            @Override
-            protected void updateItem(User item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText("");
-                } else {
-                    setText(item.getUsername());
-                }
-            }
-        });
-    }
     
     void initTableEvents(){
         // Double click event for when to select 
@@ -410,17 +384,17 @@ public class ChefTaskPanelController {
     }
 
     void showTaskEditorWithId(Long id) throws IOException{
-        popup_edit_task.setVisible(true);
-        this.isEditingTask = true;
+        popup_inspect_task.setVisible(true);
+        popup_message.setVisible(false);
         this.editedTask = null;
         TaskDetailsDTO taskDetails = getTaskDetails(id);
         this.editedTask = taskDetails;
         System.out.println(taskDetails);
         this.editedTaskId = id;
-        
+        setUpTaskStatus();
+        taskStatusInput.setValue(null);
         mapTaskDetailsToView();
         editTaskUpdateCheck();
-        setUpTaskStatus();
     }
     
     void showAddTask() throws IOException{
@@ -452,19 +426,18 @@ public class ChefTaskPanelController {
     void mapTaskDetailsToView() throws IOException{
         System.out.println(editedTask);
         // Edited Task must be setup before mapping the object to view
-        taskNameInput.setText(editedTask.getTaskTitle());
+        taskTitle.setText(editedTask.getTaskTitle());
         taskStatusInput.setValue(Task.TaskStatus.valueOf(editedTask.getStatus()));
-        currentDateInput.setText(DateUtils.getDateString(editedTask.getCreationDate(), "yyyy-MM-dd") );
-        taskDeadlineDateInput.setValue(DateUtils.convertToLocalDate(editedTask.getDeadline()));
-        nbrTodosInput.setText(String.valueOf(editedTask.getTodos().size()));
+        taskCreationDate.setText(DateUtils.getDateString(editedTask.getCreationDate(), "yyyy-MM-dd") );
+        taskDeadline.setText(DateUtils.getDateString(editedTask.getDeadline(), "yyyy-MM-dd"));
+        /*nbrTodosInput.setText(String.valueOf(editedTask.getTodos().size()));
         User userToSelect = null;
         for (User user : usersObservableList) {
             if (user.getUser_id()== editedTask.getAssignedChef().getUser_id()) {
                 userToSelect = user;
                 break; // Found the user, exit the loop
             }
-        }
-        taskAssignedChefInput.setValue(userToSelect);
+        }*/
         
         mapTodosToView();
     }
@@ -479,46 +452,20 @@ public class ChefTaskPanelController {
     }
     
     void mapTodosToView() throws IOException{
-        todoContainer.getChildren().clear();
+        // Initialize the column mappings
+        TodoTitleColumn.setCellValueFactory(new PropertyValueFactory<>("todoDescription"));
+        severityColumn.setCellValueFactory(new PropertyValueFactory<>("severity"));
+        
+        ObservableList<Todo> todoList = FXCollections.observableArrayList(new ArrayList<Todo>());
+
+        // Map Task objects to TaskTableDTO and add to taskList
         for (Todo todo : editedTask.getTodos()) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/agrify/views/TodoItem.fxml"));
-            AnchorPane todoAnchorPane = loader.load();
-            
-            todoContainer.getChildren().add(todoAnchorPane);
-            TodoItemController todoController = loader.getController();
-            
-            TextField todoTextField = todoController.getTodoTextInput();
-            ComboBox<Todo.TodoSeverity> priorityComboBox = todoController.getPriorityCombobox();
-            Button deleteTodoBtn = todoController.getDeleteTodoBtn();
-            
-            // Set the values in the TextField and ComboBox
-            todoTextField.setText(todo.getTodoDescription());
-            priorityComboBox.setValue(todo.getSeverity());
-
-            // Attach event listeners to track changes
-            todoTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-                // Update the corresponding Todo object or set a flag to indicate changes
-                todo.setTodoDescription(newValue);
-                System.out.println(todo);
-            });
-
-            priorityComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-                // Update the corresponding Todo object or set a flag to indicate changes
-                todo.setSeverity(newValue);
-                System.out.println(todo);
-
-
-            });
-            
-            deleteTodoBtn.setOnAction(event -> {
-                // Remove the associated todo from your data model
-                editedTask.getTodos().remove(todo);
-
-                // Remove the todo item from the view
-                todoContainer.getChildren().remove(todoAnchorPane);
-                nbrTodosInput.setText(String.valueOf(editedTask.getTodos().size()));
-            });
+            todoList.add(todo);
         }
+        System.out.println(editedTask.getTodos());
+        // Set the TableView's items to the ObservableList
+        TodosTable.setItems(todoList);
+        
     }
     
     void mapTodosToView_added() throws IOException{
@@ -565,24 +512,17 @@ public class ChefTaskPanelController {
     }
     
     void editTaskUpdateCheck(){
-       taskNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Update the corresponding Todo object or set a flag to indicate changes
-            editedTask.setTaskTitle(newValue);
-        });
-       // add a value change listener for 
-       taskDeadlineDateInput.valueProperty().addListener((observable, oldValue, newValue) -> {
-            // Update the corresponding Todo object or set a flag to indicate changes
-            editedTask.setDeadline(DateUtils.convertDateToLocalDate(newValue) );
-        });
-       
-       taskAssignedChefInput.valueProperty().addListener((observable, oldValue, newValue) -> {
-            // Update the corresponding Todo object or set a flag to indicate changes
-            editedTask.setAssignedChef(newValue);
-        });
        
        taskStatusInput.valueProperty().addListener((observable, oldValue, newValue) -> {
             // Update the corresponding Todo object or set a flag to indicate changes
-            editedTask.setStatus(newValue.name());
+            if(oldValue != newValue){
+                editedTask.setStatus(newValue.name());
+                taskService.updateTask(editedTask.getId(), editedTask.mapToTask());
+                popup_message.setVisible(true);
+                popupMessageText.setText("Statut de cette tache est mise a jour avec succes");
+                updateTableState();
+            }
+            
         });
     }
     
@@ -840,12 +780,16 @@ public class ChefTaskPanelController {
         todoContainer.getChildren().clear();
     }
     
+    @FXML
+    void exitPopup(ActionEvent event) {
+        popup_inspect_task.setVisible(false);
+    }
+    
     
 
     void updateFiltersDisplay() {
         searchInput.setText(currentTaskFilters.getSearchTerm());
         updateTaskListFilterTabSwitches();
-        chefDroplistFilter.setValue(currentTaskFilters.getChefFilter());
         //createdAfterDatePicker.setValue(currentTaskFilters.getCreatedAfter());
         //Update data
         updateTableState();
