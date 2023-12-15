@@ -667,8 +667,8 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
             popup_animal_management.setVisible(false);
         }
     }
-    //
-
+    // Task reroute
+  
     // changerContinu est done
     public void changerContinu(ActionEvent event) {
         // pour accider lel gestion tableau de bord
@@ -1306,6 +1306,11 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
 
         });
 
+    }
+
+    
+    public void on_btn_tache_click(ActionEvent event) {
+        
     }
 
  
