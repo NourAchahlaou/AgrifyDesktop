@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package agrify.controllers;
 
 import agrify.DTO.TaskDetailsDTO;
@@ -15,8 +20,6 @@ import agrify.services.impl.TodoServiceImpl;
 import agrify.utils.DateUtils;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +31,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -48,7 +52,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
-public class AdminTaskPanelController {
+/**
+ * FXML Controller class
+ *
+ * @author ihebb
+ */
+public class ChefTaskPanelController {
 
     @FXML
     private Button back_btn;
@@ -241,7 +250,7 @@ public class AdminTaskPanelController {
     // To whether add or edit a task when the popup comes
     Boolean isEditingTask = false;
     Long editedTaskId;
-    public AdminTaskPanelController() {
+    public ChefTaskPanelController() {
         taskService = new TaskServiceImpl();
         todoService = new TodoServiceImpl();
         userService = new ServiceUser();
@@ -347,7 +356,6 @@ public class AdminTaskPanelController {
         taskTitleField.setCellValueFactory(new PropertyValueFactory<>("taskTitle"));
         creationDateField.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         deadlineField.setCellValueFactory(new PropertyValueFactory<>("deadline"));
-        assignedChefField.setCellValueFactory(new PropertyValueFactory<>("assignedChef"));
         statusField.setCellValueFactory(new PropertyValueFactory<>("status"));
         
     }
@@ -843,6 +851,4 @@ public class AdminTaskPanelController {
         updateTableState();
     }
     
-    
-   
 }

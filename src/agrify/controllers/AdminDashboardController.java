@@ -129,8 +129,18 @@ public class AdminDashboardController {
     }
 
     @FXML
-    void AdminDashboardGestionTaches(ActionEvent event) {
+    void AdminDashboardGestionTaches(ActionEvent event) throws Exception{
+        
+        Parent adminTaskPanel = FXMLLoader.load(getClass().getResource("/agrify/views/adminTaskPanel.fxml"));
+        Scene animalDashboardScene = new Scene(adminTaskPanel);
 
+        Stage animalDashboardStage = new Stage();
+        animalDashboardStage.initStyle(StageStyle.TRANSPARENT);
+        animalDashboardStage.setScene(animalDashboardScene);
+        animalDashboardStage.show();
+
+        Stage signInStage = (Stage) AdminDashboardGestionUserBtn.getScene().getWindow();
+        signInStage.close();
     }
     
     
