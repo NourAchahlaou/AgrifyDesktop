@@ -693,8 +693,8 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
             popup_animal_management.setVisible(false);
         }
     }
-    //
-
+    // Task reroute
+  
     // changerContinu est done
     public void changerContinu(ActionEvent event) {
         // pour accider lel gestion tableau de bord
@@ -1332,6 +1332,20 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
 
         });
 
+    }
+
+    
+    public void on_btn_tache_click(ActionEvent event) throws Exception{
+        Parent adminTaskPanel = FXMLLoader.load(getClass().getResource("/agrify/views/ChefTaskPanel.fxml"));
+        Scene animalDashboardScene = new Scene(adminTaskPanel);
+
+        Stage animalDashboardStage = new Stage();
+        animalDashboardStage.initStyle(StageStyle.TRANSPARENT);
+        animalDashboardStage.setScene(animalDashboardScene);
+        animalDashboardStage.show();
+
+        Stage signInStage = (Stage) btn_tache.getScene().getWindow();
+        signInStage.close();
     }
 
  
