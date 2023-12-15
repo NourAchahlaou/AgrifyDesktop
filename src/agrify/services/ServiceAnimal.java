@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package agrify.services;
 
 import agrify.entities.Animal;
-import agrify.entities.BesoinNutritionnelsEntity;
 import agrify.utils.Database;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,22 +10,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author alien kami sama
- */
 public class ServiceAnimal implements IServiceAnimal<Animal> {
 
-    private Connection connect;
-    private Database database; // Add a dataSource field
+    private final Connection connection;
+    // Consider renaming 'database' to 'dataSource' for clarity
+    private final Database dataSource;
 
+    // Use constructor injection for better flexibility
     public ServiceAnimal(Connection connection) {
-        this.connect = connection;
+        this.connection = connection;
+        this.dataSource = null;
     }
 
-    public ServiceAnimal(Database database) {
-        this.database = database;
-
+    // Use constructor injection for better flexibility
+    public ServiceAnimal(Database dataSource) {
+        this.connection = null;
+        this.dataSource = dataSource;
     }
 
     public List<Animal> getSpecificColumnsFromDatabase() {
@@ -40,32 +35,24 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
             // Create a SQL query to select specific columns
             String query = "SELECT `id`, `espece`, `sexe`, `poids`, `age`, `unit_animal` FROM `animal`";
 
-            // Create a prepared statement
-            PreparedStatement statement = connect.prepareStatement(query);
+            // Use the appropriate connection (either 'connection' or 'dataSource.getConnection()')
+            try (PreparedStatement statement = (connection != null) ? connection.prepareStatement(query) : dataSource.getConnection().prepareStatement(query);
+                 ResultSet resultSet = statement.executeQuery()) {
 
-            // Execute the query and get the result set
-            ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    // Retrieve the specific columns from the result set and create Animal objects
+                    int id = resultSet.getInt("id");
+                    String espece = resultSet.getString("espece");
+                    String sexe = resultSet.getString("sexe");
+                    double poids = resultSet.getDouble("poids");
+                    int age = resultSet.getInt("age");
+                    String unitAnimal = resultSet.getString("unit_animal");
 
-            while (resultSet.next()) {
-                // Retrieve the specific columns from the result set and create Animal objects
-                int id = resultSet.getInt("id");
-                String espece = resultSet.getString("espece");
-                String sexe = resultSet.getString("sexe");
-                double poids = resultSet.getDouble("poids");
-                int age = resultSet.getInt("age");
-                String unit_animal = resultSet.getString("unit_animal");
-                
-
-                // Create a new Animal and add it to the list
-                Animal animal = new Animal(id, espece, sexe, poids, age, unit_animal);
-
-                specificColumnsData.add(animal);
-
+                    // Create a new Animal and add it to the list
+                    Animal animal = new Animal(id, espece, sexe, poids, age, unitAnimal);
+                    specificColumnsData.add(animal);
+                }
             }
-
-            // Close the statement and result set
-            statement.close();
-            resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace(); // Handle exceptions appropriately
         }
@@ -75,10 +62,8 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
 
     @Override
     public void ajouter(Animal animal) {
-        try {
-            System.out.println(connect);
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO `animal`(`id`, `espece`, `sexe`, `poids`, `age`, `unit_animal`) VALUES (?, ?, ?, ?, ?, ?)");
-
+        // Use try-with-resources to automatically close the statement
+        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO `animal`(`id`, `espece`, `sexe`, `poids`, `age`, `unit_animal`) VALUES (?, ?, ?, ?, ?, ?)")) {
             statement.setInt(1, animal.getId());
             statement.setString(2, animal.getEspece());
             statement.setString(3, animal.getSexe());
@@ -87,7 +72,6 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
             statement.setString(6, animal.getUnit_animal());
 
             statement.executeUpdate();
-            statement.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -99,16 +83,16 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
             // Prepare the SQL update statement
             String updateQuery = "UPDATE `animal` SET `espece`=?, `sexe`=?, `poids`=?, `age`=?, `unit_animal`=? WHERE `id`=?";
 
-            PreparedStatement statement = connect.prepareStatement(updateQuery);
-            statement.setString(1, animal.getEspece());
-            statement.setString(2, animal.getSexe());
-            statement.setDouble(3, animal.getPoids());
-            statement.setInt(4, animal.getAge());
-            statement.setString(5, animal.getUnit_animal());
-            statement.setInt(6, animal.getId());
+            try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
+                statement.setString(1, animal.getEspece());
+                statement.setString(2, animal.getSexe());
+                statement.setDouble(3, animal.getPoids());
+                statement.setInt(4, animal.getAge());
+                statement.setString(5, animal.getUnit_animal());
+                statement.setInt(6, animal.getId());
 
-            statement.executeUpdate();
-            statement.close();
+                statement.executeUpdate();
+            }
         } catch (SQLException e) {
             e.printStackTrace(); // Handle exceptions appropriately
         }
@@ -119,56 +103,57 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
         try {
             String deleteQuery = "DELETE FROM `animal` WHERE `id`=?";
 
-            PreparedStatement preparedStatement = connect.prepareStatement(deleteQuery);
-            preparedStatement.setInt(1, idAnimal);
+            try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+                preparedStatement.setInt(1, idAnimal);
 
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
+                preparedStatement.executeUpdate();
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
     public List<Animal> getAllAnimal() {
-    List<Animal> animals = new ArrayList<>();
-    try {
-        String query = "SELECT * FROM animal";
+        List<Animal> animals = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM animal";
 
-        // Create a prepared statement
-        PreparedStatement statement = connect.prepareStatement(query);
+            // Create a prepared statement
+            try (PreparedStatement statement = connection.prepareStatement(query);
+                 ResultSet resultSet = statement.executeQuery()) {
 
-        // Execute the query and get the result set
-        ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()) {
+                    // Use a constructor or factory method to create Animal instances
+                    Animal animal = new Animal(
+                            resultSet.getInt("id"),
+                            resultSet.getString("espece"),
+                            resultSet.getDouble("poids"),
+                            resultSet.getString("unit_animal")
+                    );
 
-        while (resultSet.next()) {
-            // Use a constructor or factory method to create Animal instances
-            Animal animal = new Animal(
-                resultSet.getInt("id"),
-                resultSet.getString("espece"),
-                resultSet.getDouble("poids"),
-                resultSet.getString("unit_animal")
-            );
-
-            animals.add(animal);
+                    animals.add(animal);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle any potential database exceptions
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        // Handle any potential database exceptions
-        e.printStackTrace();
+
+        return animals;
     }
 
-    return animals;
-}
     public int getTotalAnimalsInGestation() {
         int totalAnimals = 0;
 
         try {
-            if (connect != null) {
+            if (connection != null) {
                 String query = "SELECT COUNT(*) AS total FROM gestation";
-                PreparedStatement statement = connect.prepareStatement(query);
-                ResultSet resultSet = statement.executeQuery();
+                try (PreparedStatement statement = connection.prepareStatement(query);
+                     ResultSet resultSet = statement.executeQuery()) {
 
-                if (resultSet.next()) {
-                    totalAnimals = resultSet.getInt("total");
+                    if (resultSet.next()) {
+                        totalAnimals = resultSet.getInt("total");
+                    }
                 }
             } else {
                 System.err.println("Database connection is null");
@@ -180,8 +165,4 @@ public class ServiceAnimal implements IServiceAnimal<Animal> {
 
         return totalAnimals;
     }
-   
-
-
-
 }

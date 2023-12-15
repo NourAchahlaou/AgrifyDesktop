@@ -7,6 +7,7 @@ package agrify.services;
 import agrify.entities.Plante;
 import agrify.entities.Health;
 import agrify.entities.EtatPlante;
+import agrify.utils.DataSource;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -25,7 +26,7 @@ public class PlanteCrud {
     
     Connection cnx2;
     public PlanteCrud(){
-       cnx2 =MyConnection.getInstance().getCnx();
+       cnx2 =DataSource.getInstance().getConnection();
    }
     
     public void ajouterPlante(Plante p){

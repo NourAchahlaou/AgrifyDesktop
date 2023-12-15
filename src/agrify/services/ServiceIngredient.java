@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
@@ -87,6 +88,8 @@ public void ajouter(IngrediantEntity ingredient) {
             String type= resultSet.getString("type_ingredient"); 
             String nutrimentPrincipal = resultSet.getString("nutriment_principal_ingredient");
 
+    // Unserialize the nutriment_principal_ingredient column
+
             // Create a new BesoinNutritionnelsEntity and add it to the list
             IngrediantEntity ingrediant = new IngrediantEntity( nom,  type,  description,  prix,  quantite,  udm,  source, nutrimentPrincipal);
             specificColumnsData.add(ingrediant);
@@ -102,11 +105,57 @@ public void ajouter(IngrediantEntity ingredient) {
 
     return specificColumnsData;
 }
+
+    
+
+ public static List<IngrediantEntity> searchIngredientsByName(Connection connection, String searchTerm) {
+    List<IngrediantEntity> result = new ArrayList<>();
+
+    try {
+        // Create a SQL query to select ingredients by name
+        String query = "SELECT * FROM `ingredient` WHERE LOWER(`name_ingredient`) LIKE ?";
+
+        // Create a prepared statement
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            // Set the name parameter (case-insensitive search)
+            statement.setString(1, "%" + searchTerm.toLowerCase() + "%");
+
+            // Execute the query and get the result set
+            try (ResultSet resultSet = statement.executeQuery()) {
+                // Retrieve data from the result set and create IngrediantEntity objects
+                while (resultSet.next()) {
+                    IngrediantEntity ingredient = new IngrediantEntity();
+                    ingredient.setIdIngredient(resultSet.getInt("id"));
+                    ingredient.setNameIngredient(resultSet.getString("name_ingredient"));
+                    ingredient.setItemQuantityIngredient(resultSet.getDouble("item_quantity_ingredient"));
+                    ingredient.setUnitIngredient(resultSet.getString("unit_ingredient"));
+                    ingredient.setCostIngredient(resultSet.getDouble("cost_ingredient"));
+                    ingredient.setLoadedByIngredient(resultSet.getString("loaded_by_ingredient"));
+                    ingredient.setDescriptionIngredient(resultSet.getString("description_ingredient"));
+                    ingredient.setTypeIngredient(resultSet.getString("type_ingredient"));
+                    ingredient.setNutrimentPrincipalIngredient(resultSet.getString("nutriment_principal_ingredient"));
+
+                    result.add(ingredient);
+                }
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Handle exceptions here
+    }
+
+    return result;
+}
+
+
+
+  
+
     @Override
 public void update(IngrediantEntity ingrediantEntity) {
     try {
         // Prepare the SQL update statement
-        String updateQuery = "UPDATE `ingredient` SET `name_Ingredient`=?, `item_Quantity_Ingredient`=?, `unit_Ingredient`=?, `cost_Ingredient`=?, `loaded_By_Ingredient`=?, `description_Ingredient`=?, `type_Ingredient`=?, `nutriment_PrincipalIngredient`=? WHERE `id`=?";
+        String updateQuery = "UPDATE `ingredient` SET `name_Ingredient`=?, `item_Quantity_Ingredient`=?, `unit_Ingredient`=?, `cost_Ingredient`=?, `loaded_By_Ingredient`=?, `description_Ingredient`=?, `type_Ingredient`=?, `nutriment_Principal_ingredient`=? WHERE `id`=?";
 
         PreparedStatement statement = connect.prepareStatement(updateQuery);
         statement.setString(1, ingrediantEntity.getNameIngredient());

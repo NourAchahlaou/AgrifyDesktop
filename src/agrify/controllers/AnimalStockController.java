@@ -44,6 +44,9 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.StageStyle;
 
 
 
@@ -56,6 +59,9 @@ public class AnimalStockController implements Initializable {
 
     @FXML
     private TextField tfnomsta;
+    
+        @FXML
+    private ImageView logoutbtn;
     @FXML
     private ComboBox<SexeAnimal> cbsexesta;
     @FXML
@@ -114,6 +120,25 @@ public class AnimalStockController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    
+      @FXML
+    void logoutbtn(MouseEvent event) throws Exception
+ 
+    {
+        Parent signUpRoot = FXMLLoader.load(getClass().getResource("/agrify/views/AdminDashboard.fxml"));
+        Scene signUpScene = new Scene(signUpRoot);
+   
+        Stage signUpStage = new Stage();
+        signUpStage.initStyle(StageStyle.TRANSPARENT);
+        signUpStage.setScene(signUpScene);
+        signUpStage.show();
+
+        Stage splashSignInStage = (Stage) logoutbtn.getScene().getWindow();
+        splashSignInStage.close();
+    }
+
+    
     
     
     private void updateLineChart() {
