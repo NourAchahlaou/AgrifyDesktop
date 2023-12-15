@@ -83,6 +83,9 @@ public class AnimalManagementController implements Initializable {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
+    
+    @FXML
+    private Button button_logout_animal;       
     @FXML
 public ComboBox<String> nom_ingredient_ration_selected;
         @FXML
@@ -104,6 +107,11 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
     private NumberAxis y2;
     @FXML
     private AnchorPane anchor_modify_ingredient;
+    
+    @FXML
+    private AnchorPane animalManagementPagechef;
+        @FXML
+    private AnchorPane home;
     @FXML
     private AnchorPane anchor_delete_modifier_popup_ration;
 
@@ -649,6 +657,21 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
     }
     });
     }*/
+@FXML
+    void logout (ActionEvent event) throws IOException {
+        
+        
+                Parent animalDashboardRoot = FXMLLoader.load(getClass().getResource("/agrify/views/signin.fxml"));
+                Scene animalDashboardScene = new Scene(animalDashboardRoot);
+
+                Stage animalDashboardStage = new Stage();
+                animalDashboardStage.initStyle(StageStyle.TRANSPARENT);
+                animalDashboardStage.setScene(animalDashboardScene);
+                animalDashboardStage.show();
+
+                Stage signInStage = (Stage) button_logout_animal.getScene().getWindow();
+                signInStage.close();
+    }
     //exit is done 
     public void exit(ActionEvent event) {
         if (event.getSource() == btn_exit) {
@@ -1010,12 +1033,12 @@ public ComboBox<String> popup_combobox_unite_animal_amanagement1;
             connect = db.getConnection(); // Ensure 'connect' is properly initialized.
 
             if (connect != null) {
-                String sql = "SELECT * FROM `userinfo` WHERE `userID` = 2";
+                String sql = "SELECT * FROM `user` WHERE `user_id` = 1";
                 prepare = connect.prepareStatement(sql); // Initialize the prepared statement.
                 result = prepare.executeQuery(); // Initialize the result set.
 
                 if (result.next()) {
-                    label_nom_chef.setText(result.getString("userName"));
+                    label_nom_chef.setText(result.getString("user_nom")+" "+result.getString("user_prenom"));
                 }
             } else {
                 System.out.println("Database connection is null.");

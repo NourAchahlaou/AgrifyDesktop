@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
@@ -87,6 +88,8 @@ public void ajouter(IngrediantEntity ingredient) {
             String type= resultSet.getString("type_ingredient"); 
             String nutrimentPrincipal = resultSet.getString("nutriment_principal_ingredient");
 
+    // Unserialize the nutriment_principal_ingredient column
+
             // Create a new BesoinNutritionnelsEntity and add it to the list
             IngrediantEntity ingrediant = new IngrediantEntity( nom,  type,  description,  prix,  quantite,  udm,  source, nutrimentPrincipal);
             specificColumnsData.add(ingrediant);
@@ -102,6 +105,9 @@ public void ajouter(IngrediantEntity ingredient) {
 
     return specificColumnsData;
 }
+    
+  
+
     @Override
 public void update(IngrediantEntity ingrediantEntity) {
     try {
