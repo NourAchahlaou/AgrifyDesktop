@@ -8,6 +8,7 @@ package agrify.services;
 import agrify.entities.Animal_1;
 import agrify.entities.Health;
 import agrify.entities.SexeAnimal;
+import agrify.utils.DataSource;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -27,7 +28,7 @@ public class AnimalCrud {
     
     Connection cnx2;
     public AnimalCrud(){
-       cnx2 =MyConnection.getInstance().getCnx();
+       cnx2 =DataSource.getInstance().getConnection();
    }
     
     public void ajouterAnimal(Animal_1 a){

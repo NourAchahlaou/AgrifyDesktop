@@ -33,24 +33,30 @@ public class ServiceBesoinNutritionnel implements IServiceBesoinNutritionnel<Bes
 
     }
 
-    @Override
-    public void ajouter(BesoinNutritionnelsEntity besoinNutritionnel) {
-        try {
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO `nutritional_needs`(`species_needs`, `production_status_needs`, `sex_needs`, `minimum_weight_needs`, `maximum_weight_needs`, `production_goal_needs`) VALUES (?, ?, ?, ?, ?, ?)");
+@Override
+public void ajouter(BesoinNutritionnelsEntity besoinNutritionnel) {
+    try {
+        PreparedStatement statement = connect.prepareStatement(
+                "INSERT INTO `nutritional_needs`(`id`, `species_needs`, `production_status_needs`, `sex_needs`, `minimum_weight_needs`, `maximum_weight_needs`, `production_goal_needs`) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        );
 
-            statement.setString(1, besoinNutritionnel.getEspeceBesoinNutritionnel());
-            statement.setString(2, besoinNutritionnel.getStatutProductionBesoinNutritionnel());
-            statement.setString(3, besoinNutritionnel.getSexeBesoinNutritionnel());
-            statement.setDouble(4, besoinNutritionnel.getPoidsMinBesoinNutritionnel());
-            statement.setDouble(5, besoinNutritionnel.getPoidsMaxBesoinNutritionnel());
-            statement.setString(6, besoinNutritionnel.getButeProductionBesoinNutritionnel());
+        statement.setInt(1, besoinNutritionnel.getIdBesoinNutritionnel());
+        statement.setString(2, besoinNutritionnel.getEspeceBesoinNutritionnel());
+        statement.setString(3, besoinNutritionnel.getStatutProductionBesoinNutritionnel());
+        statement.setString(4, besoinNutritionnel.getSexeBesoinNutritionnel());
+        statement.setDouble(5, besoinNutritionnel.getPoidsMinBesoinNutritionnel());
+        statement.setDouble(6, besoinNutritionnel.getPoidsMaxBesoinNutritionnel());
+        statement.setString(7, besoinNutritionnel.getButeProductionBesoinNutritionnel());
 
-            statement.executeUpdate();
-            statement.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        statement.executeUpdate();
+        statement.close();
+
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
     }
+}
+
+
 
     public List<BesoinNutritionnelsEntity> getSpecificColumnsFromDatabase() {
         List<BesoinNutritionnelsEntity> specificColumnsData = new ArrayList<>();
@@ -98,7 +104,7 @@ public void update(BesoinNutritionnelsEntity besoinNutritionnel)  {
                 "UPDATE `nutritional_needs` " +
                 "SET `species_needs`=?, `production_status_needs`=?, `sex_needs`=?, " +
                 "`minimum_weight_needs`=?, `maximum_weight_needs`=?, `production_goal_needs`=? " +
-                "WHERE `idBesoinNutritionnel`=?"
+                "WHERE `id`=?"
         );
 
         statement.setString(1, besoinNutritionnel.getEspeceBesoinNutritionnel());
