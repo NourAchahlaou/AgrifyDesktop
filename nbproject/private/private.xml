@@ -3,29 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/SigninController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/NouveauNesEntity.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/AnimalManagementController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/AnimauxEnGestationEntity.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/ModifierMaladieController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/BesoinNutritionnelsEntity.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/Animal.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/PlanteStockController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/entities/IngrediantEntity.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceBesoinNutritionnel.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceAnimal.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/UserDeleteController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/RecAffichageController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/UserHomeController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceIngredient.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/RecAjouController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/UserDashboardController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/AnimalStockController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServicePresence.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/AjouterMaladieController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/controllers/StockDiversController.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceRation.java</file>
-            <file>file:/C:/Users/alien%20kami%20sama/Desktop/pidev%20final/Agrify/src/agrify/services/ServiceAnimauxEnGestation.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/controllers/AdminTaskPanelController.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/entities/Todo.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/Agrify.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/controllers/AdminDashboardController.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/controllers/AnimalManagementController.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/controllers/ChefTaskPanelController.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/DTO/TaskDetailsDTO.java</file>
+            <file>file:/D:/Agrify/AgrifyFinal/AgrifyDesktop/src/agrify/DTO/TaskTableDTO.java</file>
         </group>
     </open-files>
 </project-private>

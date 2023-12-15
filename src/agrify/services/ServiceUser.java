@@ -6,7 +6,7 @@
 package agrify.services;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import at.favre.lib.crypto.bcrypt.BCrypt;
 /**
  *
  * @author tbagh
@@ -27,6 +27,11 @@ import agrify.utils.DataSource;
 public class ServiceUser implements IServiceUser<User> {
     private Connection connect;
     private DataSource dataSource;
+
+public ServiceUser(){
+        this.dataSource = DataSource.getInstance();
+        this.connect = dataSource.getConnection();
+    }
 
 
 public ServiceUser(Connection connection) 
@@ -350,16 +355,16 @@ public void updateUserr(User user)
  public User authenticateUser(String username, String password) {
         try {
             String hashedPassword = hashPassword(password);
-
-            if (hashedPassword == null) {
+            boolean isCorrectPassword = verifyPassword(password,hashedPassword);
+            
+            if (hashedPassword == null || !isCorrectPassword) {
                 // Handle error or log an error
                 return null;
             }
 
-            String selectQuery = "SELECT * FROM user WHERE username = ? AND password = ?";
+            String selectQuery = "SELECT * FROM user WHERE username = ?";
             PreparedStatement preparedStatement = connect.prepareStatement(selectQuery);
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, hashedPassword);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -381,9 +386,8 @@ public void updateUserr(User user)
         }
         return null;
     }
-    @Override
 
-    public String hashPassword(String password) {
+  /*  public String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashedBytes = md.digest(password.getBytes());
@@ -397,7 +401,23 @@ public void updateUserr(User user)
             return null;
         }
     }
+*/
+    
+     public String hashPassword(String password) {
+        // Generate a salt (you can also provide your own salt as a byte array)
+        // Hash the password with the generated salt
+        String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+         System.out.println(hashedPassword);
+        return hashedPassword;
+    }
 
+    // Verify a password against its hash
+    public boolean verifyPassword(String password, String hashedPassword) {
+        // Verify the password against its hash
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), hashedPassword);
+        System.out.println(result);
+        return result.verified;
+    }
 
 
 

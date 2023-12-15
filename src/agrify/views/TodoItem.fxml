@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="55.0" prefWidth="573.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.TodoItemController">
+    <stylesheets>
+        <URL value="@/agrify/design/TableauBordStyle.css" />
+    </stylesheets>
+   <children>
+      <ComboBox fx:id="priorityCombobox" layoutX="418.0" layoutY="7.0" prefHeight="34.0" prefWidth="114.0" promptText="Priorité" styleClass="com_box" stylesheets="@../design/TableauBordStyle.css" />
+      <TextField fx:id="todoTextInput" layoutX="14.0" layoutY="8.0" prefHeight="34.0" prefWidth="398.0" promptText="Todo description" styleClass="input" stylesheets="@../design/TableauBordStyle.css" />
+      <Button fx:id="deleteTodoBtn" layoutX="537.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="15.0" style="-fx-border-radius: 50px; -fx-background-color: none; -fx-text-fill: #f00;" text="x" />
+   </children>
+</AnchorPane>

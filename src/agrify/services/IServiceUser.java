@@ -26,8 +26,8 @@ public interface IServiceUser <T>
         public boolean isUsernameExists(String username);
         public T authenticateUser(String username, String password);
         public List<T> getUserBest(int year) throws SQLException ;
-    public String hashPassword(String password) ;
-
+        public  String hashPassword(String password) ;
+        public boolean verifyPassword(String password, String hashedPassword);
 
 
     }

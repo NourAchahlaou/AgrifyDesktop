@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.UserDashboardController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/UserAcceuil.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="GestionProduitBatn" layoutX="53.0" layoutY="271.0" mnemonicParsing="false" onAction="#GestionProduit" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Produit">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-ingredient-64.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="UserDashboardAccountSettingsBtn" layoutX="1209.0" layoutY="31.0" minWidth="44.0" mnemonicParsing="false" onAction="#UserDashboardAccountSettings" prefHeight="45.0" prefWidth="51.0" style="-fx-background-color: transparent; -fx-text-fill: #8d8; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia;">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-user-management-53.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="UserDashboardGestionReclamationBtn" layoutX="1020.0" layoutY="633.0" mnemonicParsing="false" onAction="#UserDashboardGestionReclamation" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Reclamation">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-warning-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="GestionAnimalBtn" layoutX="53.0" layoutY="193.0" mnemonicParsing="false" onAction="#GestionAnimal" prefHeight="50.0" prefWidth="250.0" style="-fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff; -fx-background-color: transparent;" text="Gestion Animal">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-cow-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="GestionIngrediantsBtn" layoutX="53.0" layoutY="351.0" mnemonicParsing="false" onAction="#GestionIngrediants" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion Ingrédiant">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-wheat-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="UserDashboardGestionTachesBtn" layoutX="1020.0" layoutY="570.0" mnemonicParsing="false" onAction="#UserDashboardGestionTaches" prefHeight="50.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Tache">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-task-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="UserDashboardDeconnexionBtn" layoutX="78.0" layoutY="633.0" mnemonicParsing="false" onAction="#UserDashboardDeconnexion" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #8d8;" text="Deconnexion">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-logout-rounded-left-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="GestionTraitementBtn" layoutX="53.0" layoutY="423.0" mnemonicParsing="false" onAction="#GestionTraitement" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion traitement">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-veterinarian-male-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="GestionNutritionBtn" layoutX="53.0" layoutY="498.0" mnemonicParsing="false" onAction="#GestionNutrition" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-font-size: 18px; -fx-background-radius: 25; -fx-font-family: georgia; -fx-border-color: #fff;" text="Gestion nutrition">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/icons8-nutrition-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

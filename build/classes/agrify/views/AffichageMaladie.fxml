@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agrify.controllers.AffichageMaladieController">
+   <children>
+      <AnchorPane prefHeight="700.0" prefWidth="209.0" styleClass="PANEL1" stylesheets="@ajoutermaladie.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="110.0" fitWidth="129.0" layoutX="43.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/logo.png" />
+               </image>
+            </ImageView>
+            
+            <Button fx:id="allerajoutermaladie" layoutX="23.0" layoutY="202.0" mnemonicParsing="false" onAction="#onallerajoutermaladie" prefHeight="35.0" prefWidth="164.0" styleClass="btn-1" stylesheets="@ajoutermaladie.css" text="Ajouter une maladie" />
+            <Button layoutX="14.0" layoutY="573.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="164.0" styleClass="btn-1" stylesheets="@ajoutermaladie.css" text="Tache" />
+            <Button fx:id="allermaladieReclamation" layoutX="14.0" layoutY="623.0" mnemonicParsing="false" onAction="#onallermaladieReclamation" prefHeight="35.0" prefWidth="164.0" styleClass="btn-1" stylesheets="@ajoutermaladie.css" text="Reclmation" />
+            <Button fx:id="historiqueanimal" layoutX="23.0" layoutY="253.0" mnemonicParsing="false" onAction="#onhistoriqueanimal" prefHeight="35.0" prefWidth="164.0" styleClass="btn-1" stylesheets="@ajoutermaladie.css" text="Modifie Maladie" />
+            <Button fx:id="allerasuppermaladie" layoutX="23.0" layoutY="302.0" mnemonicParsing="false" onAction="#onallerasuppermaladie" prefHeight="35.0" prefWidth="164.0" styleClass="btn-1" stylesheets="@ajoutermaladie.css" text="Supprimer Maladie" />
+            <Label layoutX="27.0" layoutY="155.0" prefHeight="35.0" prefWidth="157.0" text="Espace véterinaire" textFill="#393434">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="67.0" fitWidth="446.0" layoutX="589.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/Capture_d_écran_2023-10-11_153514-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tablemalaaff" layoutX="293.0" layoutY="166.0" prefHeight="468.0" prefWidth="934.0">
+        <columns>
+          <TableColumn fx:id="maladieaff1" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="maladieaff2" prefWidth="140.0" text="Id Animal" />
+            <TableColumn fx:id="maladieaff4" prefWidth="231.0" text="Medicamaent" />
+            <TableColumn fx:id="maladieaff5" prefWidth="259.0" text="Type de traitement" />
+            <TableColumn fx:id="maladieaff6" prefWidth="228.0" text="Dosage" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="exitmaladie" fitHeight="35.0" fitWidth="41.0" layoutX="1210.0" layoutY="31.0" onMouseClicked="#onexitmaladie" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/sign-out-alt.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exitmaladie1" fitHeight="35.0" fitWidth="41.0" layoutX="1154.0" layoutY="31.0" onMouseClicked="#onexitmaladie" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="1016.0" layoutY="38.0" text="Hadil sghair" />
+   </children>
+</AnchorPane>
